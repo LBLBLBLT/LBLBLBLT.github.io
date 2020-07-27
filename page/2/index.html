@@ -158,6 +158,423 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-PAT-A-1068" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/PAT-A-1068/">PAT-A-1068</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/04/26/PAT-A-1068/" class="archive-article-date">
+  	<time datetime="2020-04-26T03:57:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-A1068"><a href="#1-A1068" class="headerlink" title="1. A1068"></a>1. A1068</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p><img src="/2020/04/26/PAT-A-1068/1.png" alt></p>
+<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><p><img src="/2020/04/26/PAT-A-1068/2.png" alt></p>
+<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>0 1背包问题，<del>是你最爱的动态规划</del><br>XD动态规划看了就有点害怕，不过学了还是能理解一些的<br>关于动态规划<a href="https://www.jianshu.com/p/a66d5ce49df5" target="_blank" rel="noopener">1</a>还有<a href="https://www.bilibili.com/video/BV18x411V7fm" target="_blank" rel="noopener">2</a>能帮助你理解一些动态规划背包问题</p>
+<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int w[10004], dp[103] &#x3D; &#123; 0 &#125;;</span><br><span class="line">bool flag[10004] &#x3D; &#123; false &#125;;</span><br><span class="line">bool choice[10004][103] &#x3D; &#123; false &#125;;</span><br><span class="line">bool cmp(int a, int b) &#123;</span><br><span class="line">    return a &gt; b;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int n, m;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;w[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(w + 1, w + n + 1, cmp);</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        for (int v &#x3D; m; v &gt;&#x3D; w[i]; v--) &#123;</span><br><span class="line">            if (dp[v] &lt;&#x3D; dp[v - w[i]] + w[i]) &#123; &#x2F;&#x2F;如果放入i </span><br><span class="line">                dp[v] &#x3D; dp[v - w[i]] + w[i];</span><br><span class="line">                choice[i][v] &#x3D; true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (dp[m] !&#x3D; m)</span><br><span class="line">        puts(&quot;No Solution&quot;);</span><br><span class="line">    else &#123;</span><br><span class="line">        int k &#x3D; n, num &#x3D; 0, v &#x3D; m;</span><br><span class="line">        while (k &gt; 0) &#123;</span><br><span class="line">            if (choice[k][v] &#x3D;&#x3D; true) &#123;</span><br><span class="line">                flag[k] &#x3D; true;</span><br><span class="line">                v -&#x3D; w[k];</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i &#x3D; n; i &gt;&#x3D; 1; i--) &#123;</span><br><span class="line">            if (flag[i]) &#123;</span><br><span class="line">                printf(&quot;%d&quot;, w[i]);</span><br><span class="line">                num--;</span><br><span class="line">                if (num &gt; 0) putchar(&#39; &#39;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/26/PAT-A-1068/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-PAT-A-1064" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/25/PAT-A-1064/">PAT-A-1064</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/04/25/PAT-A-1064/" class="archive-article-date">
+  	<time datetime="2020-04-25T03:27:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-A-1060"><a href="#1-A-1060" class="headerlink" title="1. A 1060"></a>1. <strong>A 1060</strong></h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p><img src="/2020/04/25/PAT-A-1064/1.png" alt></p>
+<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><p> <img src="/2020/04/25/PAT-A-1064/2.PNG" alt></p>
+<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>因为搜索树他的中序遍历是有序的，所以我们可以利用这一点来建树<br>可以使用数组建树使得代码更加的简洁</p>
+<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define maxn 10000</span><br><span class="line">int N,index&#x3D;0;</span><br><span class="line">int number[maxn]; int BST[maxn];</span><br><span class="line">void inorder(int root) &#123;</span><br><span class="line">	if (root &gt; N)return;</span><br><span class="line">	inorder(root * 2);</span><br><span class="line">	BST[root] &#x3D; number[index++];</span><br><span class="line">	inorder(root * 2 + 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool cmp(int a, int b) &#123;</span><br><span class="line">	return a &lt; b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	cin &gt;&gt; N;</span><br><span class="line">	for (int n &#x3D; 0; n &lt; N; n++) &#123;</span><br><span class="line">		cin &gt;&gt; number[n];</span><br><span class="line">	&#125;</span><br><span class="line">	sort(number, number + N, cmp);</span><br><span class="line">	inorder(1);</span><br><span class="line">	for (int n &#x3D; 1; n &lt;&#x3D; N; n++) &#123;</span><br><span class="line">		cout &lt;&lt; BST[n];</span><br><span class="line">		if (n !&#x3D; N)cout &lt;&lt; &quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/25/PAT-A-1064/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-PAT-A-1060" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/PAT-A-1060/">PAT-A-1060</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/04/20/PAT-A-1060/" class="archive-article-date">
+  	<time datetime="2020-04-20T05:35:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-A1060"><a href="#1-A1060" class="headerlink" title="1. A1060"></a>1. A1060</h1><h2 id="1-1-题目："><a href="#1-1-题目：" class="headerlink" title="1.1. 题目："></a>1.1. 题目：</h2><p><img src="/2020/04/20/PAT-A-1060/1.png" alt></p>
+<h2 id="1-2-样例输入-amp-输出："><a href="#1-2-样例输入-amp-输出：" class="headerlink" title="1.2. 样例输入&amp;输出："></a>1.2. 样例输入&amp;输出：</h2><p><img src="/2020/04/20/PAT-A-1060/2.png" alt></p>
+<h2 id="1-3-思路："><a href="#1-3-思路：" class="headerlink" title="1.3. 思路："></a>1.3. 思路：</h2><p>就是按着题目走，不过有坑点就是前导零的问题，<br>例如他输入3 0.000 0你得输出 YES 0.000<em>10^0<br>输入5 000010.013 10.012 你得输出 NO 0.10013</em>10^2 0.10012*10^2<br><del>真是成也零 败也零啊</del></p>
+<h2 id="1-4-AC代码："><a href="#1-4-AC代码：" class="headerlink" title="1.4. AC代码："></a>1.4. AC代码：</h2><p>这里参考的算法笔记上面的代码，我自己的代码没过前导零o(´^｀)o</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int N;</span><br><span class="line">string deal(string s, int&amp; e) &#123;</span><br><span class="line">	int k &#x3D; 0;</span><br><span class="line">	while (s.size() &gt; 0 &amp;&amp; s[0] &#x3D;&#x3D; &#39;0&#39;) &#123;</span><br><span class="line">		s.erase(s.begin());</span><br><span class="line">	&#125;</span><br><span class="line">	if (s[0] &#x3D;&#x3D; &#39;.&#39;) &#123;</span><br><span class="line">		s.erase(s.begin());</span><br><span class="line">		while (s.size() &gt; 0 &amp;&amp; s[0] &#x3D;&#x3D; &#39;0&#39;) &#123;</span><br><span class="line">			s.erase(s.begin());</span><br><span class="line">			e--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		while (k&lt;s.size() &amp;&amp; s[k] !&#x3D; &#39;.&#39;) &#123;</span><br><span class="line">			k++;</span><br><span class="line">			e++;</span><br><span class="line">		&#125;</span><br><span class="line">		if (k &lt; s.size()) &#123;</span><br><span class="line">			s.erase(s.begin() + k);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if (s.size() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">		e &#x3D; 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int num &#x3D; 0;</span><br><span class="line">	k &#x3D; 0;</span><br><span class="line">	string res;</span><br><span class="line">	while (num &lt; N) &#123;</span><br><span class="line">		if (k &lt; s.size())res +&#x3D; s[k++];</span><br><span class="line">		else res +&#x3D; &#39;0&#39;;</span><br><span class="line">		num++;</span><br><span class="line">	&#125;</span><br><span class="line">	return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	string s1, s2, s3, s4;</span><br><span class="line">	cin &gt;&gt; N &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">	int e1 &#x3D; 0, e2 &#x3D; 0;</span><br><span class="line">	s3 &#x3D; deal(s1, e1);</span><br><span class="line">	s4 &#x3D; deal(s2, e2);</span><br><span class="line">	if (s3 &#x3D;&#x3D; s4 &amp;&amp; e1 &#x3D;&#x3D; e2) &#123;</span><br><span class="line">		cout &lt;&lt; &quot;YES 0.&quot; &lt;&lt; s3 &lt;&lt; &quot;*10^&quot; &lt;&lt; e1;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		cout &lt;&lt; &quot;NO 0.&quot; &lt;&lt; s3 &lt;&lt; &quot;*10^&quot; &lt;&lt; e1 &lt;&lt; &quot; 0.&quot; &lt;&lt; s4 &lt;&lt; &quot;*10^&quot; &lt;&lt; e2;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/PAT-A-1060/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-PAT-A-1057" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/18/PAT-A-1057/">PAT A 1057</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/04/18/PAT-A-1057/" class="archive-article-date">
+  	<time datetime="2020-04-18T03:07:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="A1057"><a href="#A1057" class="headerlink" title="A1057"></a>A1057</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p><img src="/2020/04/18/PAT-A-1057/1.png" alt></p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">17</span><br><span class="line">Pop</span><br><span class="line">PeekMedian</span><br><span class="line">Push 3</span><br><span class="line">PeekMedian</span><br><span class="line">Push 2</span><br><span class="line">PeekMedian</span><br><span class="line">Push 1</span><br><span class="line">PeekMedian</span><br><span class="line">Pop</span><br><span class="line">Pop</span><br><span class="line">Push 5</span><br><span class="line">Push 4</span><br><span class="line">PeekMedian</span><br><span class="line">Pop</span><br><span class="line">Pop</span><br><span class="line">Pop</span><br><span class="line">Pop</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出："><a href="#样例输出：" class="headerlink" title="样例输出："></a>样例输出：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Invalid</span><br><span class="line">Invalid</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">3</span><br><span class="line">Invalid</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>这题讲的是线段树！！或者分块法（分桶法），比较难，先看看树状数组的做法吧。</p>
+<p>PS：emmm关于树状数组：<a href="https://blog.csdn.net/int64ago/article/details/7429868" target="_blank" rel="noopener">1</a></p>
+<h2 id="AC代码（树状数组）"><a href="#AC代码（树状数组）" class="headerlink" title="AC代码（树状数组）"></a><strong>AC代码（树状数组）</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;cstdio&gt;</span><br><span class="line"># include &lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">class BIT</span><br><span class="line">&#123;</span><br><span class="line">private:</span><br><span class="line">	int* Elem;</span><br><span class="line">	int Size;</span><br><span class="line">	int lowbit(int n)</span><br><span class="line">	&#123;</span><br><span class="line">		return n &amp; (-n);</span><br><span class="line">	&#125;</span><br><span class="line">public:</span><br><span class="line">	BIT(int size) :Size(size + 1)  &#x2F;*想想看还是+1好了，要不申请了100的空间只能用到99感觉太奇怪了*&#x2F;</span><br><span class="line">	&#123;</span><br><span class="line">		Elem &#x3D; new int[Size];</span><br><span class="line">		for (int i &#x3D; 0; i &lt; Size; i++)&#x2F;*还没试过用memset初始化，下次试试*&#x2F;</span><br><span class="line">			Elem[i] &#x3D; 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int GetSum(int right)&#x2F;*[0,right]*&#x2F;</span><br><span class="line">	&#123;</span><br><span class="line">		int sum &#x3D; 0;</span><br><span class="line">		while (right)</span><br><span class="line">		&#123;</span><br><span class="line">			sum +&#x3D; Elem[right];</span><br><span class="line">			right -&#x3D; lowbit(right);</span><br><span class="line">		&#125;</span><br><span class="line">		return sum;</span><br><span class="line">	&#125;</span><br><span class="line">	int GetSum(int left, int right)&#x2F;*[left,right]*&#x2F;</span><br><span class="line">	&#123;</span><br><span class="line">		return GetSum(left - 1) - GetSum(right);</span><br><span class="line">	&#125;</span><br><span class="line">	void Add(int value, int index)</span><br><span class="line">	&#123;</span><br><span class="line">		while (index &lt; Size)</span><br><span class="line">		&#123;</span><br><span class="line">			Elem[index] +&#x3D; value;</span><br><span class="line">			index +&#x3D; lowbit(index);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	~BIT()</span><br><span class="line">	&#123;</span><br><span class="line">		delete[] Elem;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">BIT bit(100000);</span><br><span class="line">int getmid(int size)</span><br><span class="line">&#123;</span><br><span class="line">	int index &#x3D; (size + 1) &#x2F; 2;</span><br><span class="line">	int left &#x3D; 1, right &#x3D; 100000, mid;</span><br><span class="line">	while (left &lt; right)</span><br><span class="line">	&#123;</span><br><span class="line">		mid &#x3D; (left + right) &#x2F; 2;</span><br><span class="line">		if (bit.GetSum(mid) &lt; index)</span><br><span class="line">			left &#x3D; mid + 1;</span><br><span class="line">		else</span><br><span class="line">			right &#x3D; mid;</span><br><span class="line">	&#125;</span><br><span class="line">	return left;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n, tmp;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">	stack&lt;int&gt; s;</span><br><span class="line">	char str[10];</span><br><span class="line">	while (n--)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%s&quot;, str);</span><br><span class="line">		switch (str[1])</span><br><span class="line">		&#123;</span><br><span class="line">		case &#39;e&#39;:</span><br><span class="line">		&#123;</span><br><span class="line">			if (s.empty())</span><br><span class="line">				printf(&quot;Invalid\n&quot;);</span><br><span class="line">			else</span><br><span class="line">				printf(&quot;%d\n&quot;, getmid(s.size()));</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		case &#39;o&#39;:</span><br><span class="line">		&#123;</span><br><span class="line">			if (s.empty())</span><br><span class="line">				printf(&quot;Invalid\n&quot;);</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				tmp &#x3D; s.top(); s.pop();</span><br><span class="line">				printf(&quot;%d\n&quot;, tmp);</span><br><span class="line">				bit.Add(-1, tmp);</span><br><span class="line">			&#125;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		case &#39;u&#39;:</span><br><span class="line">		&#123;</span><br><span class="line">			scanf(&quot;%d&quot;, &amp;tmp); s.push(tmp);</span><br><span class="line">			bit.Add(1, tmp);</span><br><span class="line">		&#125;</span><br><span class="line">		break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个是一位大佬的代码，其实也可以用zkw线段树来做</p>
+<p>zkw线段树</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;cstdio&gt;</span><br><span class="line"># include &lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">typedef int Node;</span><br><span class="line">class zkw_segtree</span><br><span class="line">&#123;</span><br><span class="line">private:</span><br><span class="line">    Node *T;</span><br><span class="line">	int size;</span><br><span class="line">public:</span><br><span class="line">    zkw_segtree(int range)</span><br><span class="line">	&#123;</span><br><span class="line">	    for (size &#x3D; 1;size &lt; range+2;size&lt;&lt;&#x3D;1);</span><br><span class="line">	    T &#x3D; new Node[2*size];</span><br><span class="line">	    for (int i&#x3D;1;i&lt;size+size;i++)</span><br><span class="line">		    T[i] &#x3D; 0;    </span><br><span class="line">	&#125; </span><br><span class="line">	void Add(int value,int i)</span><br><span class="line">    &#123;</span><br><span class="line">	    for (i+&#x3D;size;i;i&gt;&gt;&#x3D;1)</span><br><span class="line">	        T[i] +&#x3D; value;</span><br><span class="line">	&#125;</span><br><span class="line">	int Query(int s,int t)</span><br><span class="line">	&#123;</span><br><span class="line">	    int ret &#x3D; 0;</span><br><span class="line">	    for (s+&#x3D;size-1,t+&#x3D;size+1;s^t^1;s&gt;&gt;&#x3D;1,t&gt;&gt;&#x3D;1)</span><br><span class="line">	        &#123;</span><br><span class="line">			  if (~s^1) ret +&#x3D; T[s^1];</span><br><span class="line">			  if (t^1)  ret +&#x3D; T[t^1]; </span><br><span class="line">			&#125;</span><br><span class="line">	    return ret;</span><br><span class="line">	&#125;</span><br><span class="line">	int Find_Kth(int k,int root &#x3D; 1)</span><br><span class="line">	&#123;</span><br><span class="line">	    while (root&lt;&lt;1 &lt; size&lt;&lt;1)</span><br><span class="line">		&#123;</span><br><span class="line">		  if (T[root&lt;&lt;1]&gt;&#x3D;k)  root &#x3D; root&lt;&lt;1;</span><br><span class="line">          else </span><br><span class="line">		    &#123;</span><br><span class="line">			  k -&#x3D; T[root&lt;&lt;1];</span><br><span class="line">			  root &#x3D; (root&lt;&lt;1) + 1;</span><br><span class="line">		    &#125;</span><br><span class="line">		&#125;		    </span><br><span class="line">	    return root - size;</span><br><span class="line">	&#125;</span><br><span class="line">	~zkw_segtree()</span><br><span class="line">	&#123;</span><br><span class="line">	    delete[] T;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">zkw_segtree segtree(100000);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  int n,tmp;</span><br><span class="line">  scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">  stack&lt;int&gt; s;</span><br><span class="line">  char str[10];</span><br><span class="line">  while (n--)</span><br><span class="line">  &#123;</span><br><span class="line">      scanf(&quot;%s&quot;,str);</span><br><span class="line">      switch(str[1])</span><br><span class="line">      &#123;</span><br><span class="line">	      case &#39;e&#39;:</span><br><span class="line">		      &#123;</span><br><span class="line">			  if (s.empty()) </span><br><span class="line">			      printf(&quot;Invalid\n&quot;);</span><br><span class="line">			  else </span><br><span class="line">			      printf(&quot;%d\n&quot;,segtree.Find_Kth((s.size()+1)&#x2F;2));</span><br><span class="line">			  break;</span><br><span class="line">			  &#125;</span><br><span class="line">	      case &#39;o&#39;:</span><br><span class="line">		      &#123;</span><br><span class="line">    	      if (s.empty())</span><br><span class="line">    	          printf(&quot;Invalid\n&quot;);</span><br><span class="line">	          else </span><br><span class="line">                  &#123;</span><br><span class="line">          	      tmp &#x3D; s.top();s.pop();</span><br><span class="line">          	      printf(&quot;%d\n&quot;,tmp);</span><br><span class="line">                  segtree.Add(-1,tmp);</span><br><span class="line">				  &#125;</span><br><span class="line">			  break;</span><br><span class="line">			  &#125;</span><br><span class="line">	      case &#39;u&#39;:</span><br><span class="line">		  	  &#123;</span><br><span class="line">	              scanf(&quot;%d&quot;,&amp;tmp);s.push(tmp);</span><br><span class="line">                  segtree.Add(1,tmp);</span><br><span class="line">			  &#125;</span><br><span class="line">			  break;</span><br><span class="line">	  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间效率是最快的，不愧是大佬(<em>^▽^</em>)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/18/PAT-A-1057/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

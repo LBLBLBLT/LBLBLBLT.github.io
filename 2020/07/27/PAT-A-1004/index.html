@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lblblblt.github.io">
-  <title>1000 | LBLT的博客</title>
+  <title>1004 Counting Leaves (30分) | LBLT的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="1000">
-<meta property="og:url" content="https://lblblblt.github.io/2020/07/25/1000/index.html">
+  <meta name="description" content="1. 题目A family hierarchy is usually presented by a pedigree tree. Your job is to count those family members who have no child. Input Specification:Each input file contains one test case. Each case star">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1004 Counting Leaves (30分)">
+<meta property="og:url" content="https://lblblblt.github.io/2020/07/27/PAT-A-1004/index.html">
 <meta property="og:site_name" content="LBLT的博客">
+<meta property="og:description" content="1. 题目A family hierarchy is usually presented by a pedigree tree. Your job is to count those family members who have no child. Input Specification:Each input file contains one test case. Each case star">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-25T03:15:50.000Z">
-<meta property="article:modified_time" content="2020-07-25T03:15:50.129Z">
+<meta property="article:published_time" content="2020-07-27T01:50:01.000Z">
+<meta property="article:modified_time" content="2020-07-27T02:10:40.438Z">
 <meta property="article:author" content="LBLT">
+<meta property="article:tag" content="刷题">
+<meta property="article:tag" content="pat">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="LBLT的博客" type="application/atom+xml">
@@ -158,14 +162,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="pat-1000" class="article article-type-pat " itemscope itemprop="blogPost">
+            <article id="post-PAT-A-1004" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      1000
+      1004 Counting Leaves (30分)
     </h1>
   
 
@@ -181,15 +185,25 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/07/25/1000/" class="archive-article-date">
-  	<time datetime="2020-07-25T03:15:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
+        <a href="/2020/07/27/PAT-A-1004/" class="archive-article-date">
+  	<time datetime="2020-07-27T01:50:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1. 题目"></a>1. <strong>题目</strong></h3><p>A family hierarchy is usually presented by a pedigree tree. Your job is to count those family members who have no child.</p>
+<p><strong>Input Specification:</strong><br>Each input file contains one test case. Each case starts with a line containing 0&lt;N&lt;100, the number of nodes in a tree, and M (&lt;N), the number of non-leaf nodes. Then M lines follow, each in the format:</p>
+<p>ID K ID[1] ID[2] … ID[K]<br>where ID is a two-digit number representing a given non-leaf node, K is the number of its children, followed by a sequence of two-digit ID’s of its children. For the sake of simplicity, let us fix the root ID to be 01.</p>
+<p>The input ends with N being 0. That case must NOT be processed.</p>
+<p><strong>Output Specification:</strong><br>For each test case, you are supposed to count those family members who have no child for every seniority level starting from the root. The numbers must be printed in a line, separated by a space, and there must be no extra space at the end of each line.</p>
+<p>The sample case represents a tree with only 2 nodes, where 01 is the root and 02 is its only child. Hence on the root 01 level, there is 0 leaf node; and on the next level, there is 1 leaf node. Then we should output 0 1 in a line.</p>
+<h3 id="2-样例输入"><a href="#2-样例输入" class="headerlink" title="2. 样例输入"></a>2. 样例输入</h3><p><code>2 1
+01 1 02</code></p>
+<h3 id="3-样例输出"><a href="#3-样例输出" class="headerlink" title="3. 样例输出"></a>3. 样例输出</h3><p><code>0 1</code></p>
+<h3 id="4-思路"><a href="#4-思路" class="headerlink" title="4. 思路"></a>4. 思路</h3><p>这题的话使用dfs把整棵树遍历一遍,统计一下叶子节点就行啦<br>还是非常简单的</p>
+<h3 id="5-AC代码"><a href="#5-AC代码" class="headerlink" title="5. AC代码"></a>5. AC代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define maxn 10000</span><br><span class="line">vector&lt;int&gt; G[maxn];</span><br><span class="line">int level[maxn],maxdepth&#x3D;-1;</span><br><span class="line">void dfs(int node,int depth)&#123;</span><br><span class="line">    if(G[node].size()&#x3D;&#x3D;0)&#123;</span><br><span class="line">        level[depth]++;</span><br><span class="line">        maxdepth&#x3D;max(depth,maxdepth);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i&#x3D;0;i&lt;G[node].size();i++)&#123;</span><br><span class="line">        dfs(G[node][i],depth+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	int n,m;scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</span><br><span class="line">    for(int i&#x3D;0;i&lt;m;i++)&#123;</span><br><span class="line">        int node,k;</span><br><span class="line">        scanf(&quot;%d %d&quot;,&amp;node,&amp;k);</span><br><span class="line">        for(int j&#x3D;0;j&lt;k;j++)&#123;</span><br><span class="line">            int temp;scanf(&quot;%d&quot;,&amp;temp);</span><br><span class="line">            G[node].push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(1,0);</span><br><span class="line">    printf(&quot;%d&quot;,level[0]);</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;maxdepth;i++)&#123;</span><br><span class="line">        printf(&quot; %d&quot;,level[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -197,7 +211,41 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -247,7 +295,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lblblblt.github.io/2020/07/25/1000/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lblblblt.github.io/2020/07/27/PAT-A-1004/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -261,18 +309,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/25/PAT-A-1001/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          1001 A+B Format (20分)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/25/PAT-A-1006/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1006 Sign In and Sign Out (25分)</div>
+    <a href="/2020/07/25/PAT-A-1003/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1003 Emergency (25分)</div>
       <i class="icon-circle-right"></i>
     </a>
   
