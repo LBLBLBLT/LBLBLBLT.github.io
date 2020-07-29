@@ -16,7 +16,7 @@
 <meta property="og:description" content="1. 题目A family hierarchy is usually presented by a pedigree tree. Your job is to count those family members who have no child. Input Specification:Each input file contains one test case. Each case star">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-27T01:50:01.000Z">
-<meta property="article:modified_time" content="2020-07-27T02:10:40.438Z">
+<meta property="article:modified_time" content="2020-07-29T02:58:44.164Z">
 <meta property="article:author" content="LBLT">
 <meta property="article:tag" content="刷题">
 <meta property="article:tag" content="pat">
@@ -203,7 +203,7 @@
 01 1 02</code></p>
 <h3 id="3-样例输出"><a href="#3-样例输出" class="headerlink" title="3. 样例输出"></a>3. 样例输出</h3><p><code>0 1</code></p>
 <h3 id="4-思路"><a href="#4-思路" class="headerlink" title="4. 思路"></a>4. 思路</h3><p>这题的话使用dfs把整棵树遍历一遍,统计一下叶子节点就行啦<br>还是非常简单的</p>
-<h3 id="5-AC代码"><a href="#5-AC代码" class="headerlink" title="5. AC代码"></a>5. AC代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define maxn 10000</span><br><span class="line">vector&lt;int&gt; G[maxn];</span><br><span class="line">int level[maxn],maxdepth&#x3D;-1;</span><br><span class="line">void dfs(int node,int depth)&#123;</span><br><span class="line">    if(G[node].size()&#x3D;&#x3D;0)&#123;</span><br><span class="line">        level[depth]++;</span><br><span class="line">        maxdepth&#x3D;max(depth,maxdepth);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i&#x3D;0;i&lt;G[node].size();i++)&#123;</span><br><span class="line">        dfs(G[node][i],depth+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	int n,m;scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</span><br><span class="line">    for(int i&#x3D;0;i&lt;m;i++)&#123;</span><br><span class="line">        int node,k;</span><br><span class="line">        scanf(&quot;%d %d&quot;,&amp;node,&amp;k);</span><br><span class="line">        for(int j&#x3D;0;j&lt;k;j++)&#123;</span><br><span class="line">            int temp;scanf(&quot;%d&quot;,&amp;temp);</span><br><span class="line">            G[node].push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(1,0);</span><br><span class="line">    printf(&quot;%d&quot;,level[0]);</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;maxdepth;i++)&#123;</span><br><span class="line">        printf(&quot; %d&quot;,level[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-AC代码"><a href="#5-AC代码" class="headerlink" title="5. AC代码"></a>5. AC代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10000</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line"><span class="keyword">int</span> level[maxn],maxdepth=<span class="number">-1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> node,<span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(G[node].<span class="built_in">size</span>()==<span class="number">0</span>)&#123;</span><br><span class="line">        level[depth]++;</span><br><span class="line">        maxdepth=<span class="built_in">max</span>(depth,maxdepth);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[node].<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        dfs(G[node][i],depth+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> node,k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;node,&amp;k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;k;j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;temp);</span><br><span class="line">            G[node].push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,level[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=maxdepth;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" %d"</span>,level[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -309,11 +309,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/27/%E5%87%86%E5%A4%87%E6%8A%8A%E8%BF%99%E5%84%BF%E8%A3%85%E4%BF%AE%E4%B8%80%E4%B8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/27/PAT-A-1005/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          准备把自己的博客再装修装修
+          1005 Spell It Right (20分)
         
       </div>
     </a>
@@ -390,18 +390,20 @@
     		&copy; 2020 LBLT
     	</div>
       	<div class="footer-right">
-      		
+      		LBLT
       	</div>
     </div>
   </div>
 </footer>
 
-<!-- 页面点击小红心 -->
+
+
+<!-- ҳ����С���� -->
 <script type="text/javascript" src="/love.js"></script>
 
-    <!-- 飘落 -->
+    <!-- Ʈ�� -->
     <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js"></script>
-    <!--  文字 -->
+    <!--  ���� -->
     <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js"></script>
     
 <footer id="footer">
@@ -411,23 +413,22 @@
     		&copy; 2020 LBLT
     	</div>
       	<div class="footer-right">
-      		<!--# PV方式，单个用户连续点击 n 篇，记录 n 次记录值-->
+      		<!--# PV��ʽ�������û�������� n ƪ����¼ n �μ�¼ֵ-->
 			<span id="busuanzi_container_site_pv">
-                本站总访问量：<span id="busuanzi_value_site_pv"></span>次
+                ��վ�ܷ�������<span id="busuanzi_value_site_pv"></span>��
             </span>
             <span class="post-meta-divider">|</span>
-            <!--# UV方式，单个用户连续点击 n 篇，记录 1 次记录值-->
+            <!--# UV��ʽ�������û�������� n ƪ����¼ 1 �μ�¼ֵ-->
 			<span id="busuanzi_container_site_uv">
-                本站访客数：<span id="busuanzi_value_site_uv"></span>人
+                ��վ�ÿ�����<span id="busuanzi_value_site_uv"></span>��
             </span>
 			
       	</div>
     </div>
   </div>
 </footer>
-<!--增加不蒜子统计-->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+<!--���Ӳ�����ͳ��-->
+<script  async  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     </div>
     <script>
 	var yiliaConfig = {

@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lblblblt.github.io/2020/07/25/PAT-A-1002/1.PNG">
 <meta property="article:published_time" content="2020-07-25T03:30:50.000Z">
-<meta property="article:modified_time" content="2020-07-25T03:49:48.619Z">
+<meta property="article:modified_time" content="2020-07-29T02:56:57.788Z">
 <meta property="article:author" content="LBLT">
 <meta property="article:tag" content="刷题">
 <meta property="article:tag" content="pat">
@@ -199,7 +199,7 @@
 <h3 id="2-样例输入"><a href="#2-样例输入" class="headerlink" title="2. 样例输入"></a>2. 样例输入</h3><p><code>2 1 2.4 0 3.2</code><br><code>2 2 1.5 1 0.5</code></p>
 <h3 id="3-样例输出"><a href="#3-样例输出" class="headerlink" title="3. 样例输出"></a>3. 样例输出</h3><p><code>3 2 1.5 1 2.9 0 3.2</code></p>
 <h3 id="4-思路"><a href="#4-思路" class="headerlink" title="4. 思路"></a>4. 思路</h3><p>我记得这是何老师讲过的一道题<br>非常的经典，但是我没用何老师的解法<br>主要是map太好用辣！！！</p>
-<h3 id="5-AC代码"><a href="#5-AC代码" class="headerlink" title="5. AC代码"></a>5. AC代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	int a, b;</span><br><span class="line">	map&lt;int, double&gt;mp;</span><br><span class="line">	cin &gt;&gt; a;</span><br><span class="line">	for (int n &#x3D; 0; n &lt; a; n++) &#123;</span><br><span class="line">		int e;</span><br><span class="line">		double c;</span><br><span class="line">		cin &gt;&gt; e &gt;&gt; c;</span><br><span class="line">		mp[e] &#x3D; c;</span><br><span class="line">	&#125;</span><br><span class="line">	cin &gt;&gt; b;</span><br><span class="line">	for (int n &#x3D; 0; n &lt; b; n++) &#123;</span><br><span class="line">		int e;</span><br><span class="line">		double c;</span><br><span class="line">		cin &gt;&gt; e &gt;&gt; c;</span><br><span class="line">		mp[e] +&#x3D; c;</span><br><span class="line">		if (mp[e] &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			mp.erase(e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; mp.size();</span><br><span class="line">	for (auto it &#x3D; mp.rbegin(); it !&#x3D; mp.rend(); it++) &#123;</span><br><span class="line">		printf(&quot; %d %.1f&quot;, it-&gt;first, it-&gt;second);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-AC代码"><a href="#5-AC代码" class="headerlink" title="5. AC代码"></a>5. AC代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a, b;</span><br><span class="line">	<span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">double</span>&gt;mp;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; a; n++) &#123;</span><br><span class="line">		<span class="keyword">int</span> e;</span><br><span class="line">		<span class="keyword">double</span> c;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; e &gt;&gt; c;</span><br><span class="line">		mp[e] = c;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; b;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; b; n++) &#123;</span><br><span class="line">		<span class="keyword">int</span> e;</span><br><span class="line">		<span class="keyword">double</span> c;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; e &gt;&gt; c;</span><br><span class="line">		mp[e] += c;</span><br><span class="line">		<span class="keyword">if</span> (mp[e] == <span class="number">0</span>) &#123;</span><br><span class="line">			mp.erase(e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; mp.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it = mp.rbegin(); it != mp.rend(); it++) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" %d %.1f"</span>, it-&gt;first, it-&gt;second);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -386,18 +386,20 @@
     		&copy; 2020 LBLT
     	</div>
       	<div class="footer-right">
-      		
+      		LBLT
       	</div>
     </div>
   </div>
 </footer>
 
-<!-- 页面点击小红心 -->
+
+
+<!-- ҳ����С���� -->
 <script type="text/javascript" src="/love.js"></script>
 
-    <!-- 飘落 -->
+    <!-- Ʈ�� -->
     <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js"></script>
-    <!--  文字 -->
+    <!--  ���� -->
     <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js"></script>
     
 <footer id="footer">
@@ -407,23 +409,22 @@
     		&copy; 2020 LBLT
     	</div>
       	<div class="footer-right">
-      		<!--# PV方式，单个用户连续点击 n 篇，记录 n 次记录值-->
+      		<!--# PV��ʽ�������û�������� n ƪ����¼ n �μ�¼ֵ-->
 			<span id="busuanzi_container_site_pv">
-                本站总访问量：<span id="busuanzi_value_site_pv"></span>次
+                ��վ�ܷ�������<span id="busuanzi_value_site_pv"></span>��
             </span>
             <span class="post-meta-divider">|</span>
-            <!--# UV方式，单个用户连续点击 n 篇，记录 1 次记录值-->
+            <!--# UV��ʽ�������û�������� n ƪ����¼ 1 �μ�¼ֵ-->
 			<span id="busuanzi_container_site_uv">
-                本站访客数：<span id="busuanzi_value_site_uv"></span>人
+                ��վ�ÿ�����<span id="busuanzi_value_site_uv"></span>��
             </span>
 			
       	</div>
     </div>
   </div>
 </footer>
-<!--增加不蒜子统计-->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+<!--���Ӳ�����ͳ��-->
+<script  async  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     </div>
     <script>
 	var yiliaConfig = {

@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://lblblblt.github.io/2020/04/25/PAT-A-1064/1.png">
 <meta property="og:image" content="https://lblblblt.github.io/2020/04/25/PAT-A-1064/2.PNG">
 <meta property="article:published_time" content="2020-04-25T03:27:50.000Z">
-<meta property="article:modified_time" content="2020-04-26T04:07:35.364Z">
+<meta property="article:modified_time" content="2020-07-29T02:59:04.300Z">
 <meta property="article:author" content="LBLT">
 <meta property="article:tag" content="刷题">
 <meta property="article:tag" content="pat">
@@ -199,7 +199,7 @@
         <h1 id="1-A-1060"><a href="#1-A-1060" class="headerlink" title="1. A 1060"></a>1. <strong>A 1060</strong></h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p><img src="/2020/04/25/PAT-A-1064/1.png" alt></p>
 <h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><p> <img src="/2020/04/25/PAT-A-1064/2.PNG" alt></p>
 <h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>因为搜索树他的中序遍历是有序的，所以我们可以利用这一点来建树<br>可以使用数组建树使得代码更加的简洁</p>
-<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define maxn 10000</span><br><span class="line">int N,index&#x3D;0;</span><br><span class="line">int number[maxn]; int BST[maxn];</span><br><span class="line">void inorder(int root) &#123;</span><br><span class="line">	if (root &gt; N)return;</span><br><span class="line">	inorder(root * 2);</span><br><span class="line">	BST[root] &#x3D; number[index++];</span><br><span class="line">	inorder(root * 2 + 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool cmp(int a, int b) &#123;</span><br><span class="line">	return a &lt; b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	cin &gt;&gt; N;</span><br><span class="line">	for (int n &#x3D; 0; n &lt; N; n++) &#123;</span><br><span class="line">		cin &gt;&gt; number[n];</span><br><span class="line">	&#125;</span><br><span class="line">	sort(number, number + N, cmp);</span><br><span class="line">	inorder(1);</span><br><span class="line">	for (int n &#x3D; 1; n &lt;&#x3D; N; n++) &#123;</span><br><span class="line">		cout &lt;&lt; BST[n];</span><br><span class="line">		if (n !&#x3D; N)cout &lt;&lt; &quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10000</span></span><br><span class="line"><span class="keyword">int</span> N,index=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> number[maxn]; <span class="keyword">int</span> BST[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root &gt; N)<span class="keyword">return</span>;</span><br><span class="line">	inorder(root * <span class="number">2</span>);</span><br><span class="line">	BST[root] = number[index++];</span><br><span class="line">	inorder(root * <span class="number">2</span> + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a &lt; b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; N; n++) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; number[n];</span><br><span class="line">	&#125;</span><br><span class="line">	sort(number, number + N, cmp);</span><br><span class="line">	inorder(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">1</span>; n &lt;= N; n++) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; BST[n];</span><br><span class="line">		<span class="keyword">if</span> (n != N)<span class="built_in">cout</span> &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -386,18 +386,20 @@
     		&copy; 2020 LBLT
     	</div>
       	<div class="footer-right">
-      		
+      		LBLT
       	</div>
     </div>
   </div>
 </footer>
 
-<!-- 页面点击小红心 -->
+
+
+<!-- ҳ����С���� -->
 <script type="text/javascript" src="/love.js"></script>
 
-    <!-- 飘落 -->
+    <!-- Ʈ�� -->
     <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js"></script>
-    <!--  文字 -->
+    <!--  ���� -->
     <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js"></script>
     
 <footer id="footer">
@@ -407,23 +409,22 @@
     		&copy; 2020 LBLT
     	</div>
       	<div class="footer-right">
-      		<!--# PV方式，单个用户连续点击 n 篇，记录 n 次记录值-->
+      		<!--# PV��ʽ�������û�������� n ƪ����¼ n �μ�¼ֵ-->
 			<span id="busuanzi_container_site_pv">
-                本站总访问量：<span id="busuanzi_value_site_pv"></span>次
+                ��վ�ܷ�������<span id="busuanzi_value_site_pv"></span>��
             </span>
             <span class="post-meta-divider">|</span>
-            <!--# UV方式，单个用户连续点击 n 篇，记录 1 次记录值-->
+            <!--# UV��ʽ�������û�������� n ƪ����¼ 1 �μ�¼ֵ-->
 			<span id="busuanzi_container_site_uv">
-                本站访客数：<span id="busuanzi_value_site_uv"></span>人
+                ��վ�ÿ�����<span id="busuanzi_value_site_uv"></span>��
             </span>
 			
       	</div>
     </div>
   </div>
 </footer>
-<!--增加不蒜子统计-->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+<!--���Ӳ�����ͳ��-->
+<script  async  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     </div>
     <script>
 	var yiliaConfig = {
