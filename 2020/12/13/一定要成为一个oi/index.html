@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lblblblt.github.io">
-  <title>最近的目标确定了 | LBLT的博客</title>
+  <title>1007 Maximum Subsequence Sum (25分) | LBLT的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="每天都忙于这些无聊的东西，唉。自己还是非常的迷茫，自己本来不想去心理咨询的，被学校抽中了就抱着试试的心态去了自己总是处于间接性踌躇满志的状态，时而紧张时而废，其实自己这样什么都不会得到，理想很丰满，现实很骨感，步子迈大了总会扯到蛋自己还是得加强基础方面的东西，总是在基础方面拉跨，期待下次比赛不会爆零吧，目前目标在明年年底ranting打倒2000吧，希望明年能拿到一块牌子，加油！">
+  <meta name="description" content="题目描述n个点，m条边，每条边分为黑边和白边，现在需要挑一些边出来，使得n个点可以两两联通。由于牛牛特别讨厌白边，所以在挑中的边中，让白边最少，输出白边的条数，如果不能两两联通，输出−1. 输入描述:第一行两个整数n,m. 1≤n,m≤2e5 接下来  m  行， 每行三个整数  x,y,z  代表xy之间有一条边。z的值为0或1，0  代表黑边，1代表白边 输出描述:一行一个整数， 表示最少的白">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最近的目标确定了">
+<meta property="og:title" content="1007 Maximum Subsequence Sum (25分)">
 <meta property="og:url" content="https://lblblblt.github.io/2020/12/13/%E4%B8%80%E5%AE%9A%E8%A6%81%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AAoi/index.html">
 <meta property="og:site_name" content="LBLT的博客">
-<meta property="og:description" content="每天都忙于这些无聊的东西，唉。自己还是非常的迷茫，自己本来不想去心理咨询的，被学校抽中了就抱着试试的心态去了自己总是处于间接性踌躇满志的状态，时而紧张时而废，其实自己这样什么都不会得到，理想很丰满，现实很骨感，步子迈大了总会扯到蛋自己还是得加强基础方面的东西，总是在基础方面拉跨，期待下次比赛不会爆零吧，目前目标在明年年底ranting打倒2000吧，希望明年能拿到一块牌子，加油！">
+<meta property="og:description" content="题目描述n个点，m条边，每条边分为黑边和白边，现在需要挑一些边出来，使得n个点可以两两联通。由于牛牛特别讨厌白边，所以在挑中的边中，让白边最少，输出白边的条数，如果不能两两联通，输出−1. 输入描述:第一行两个整数n,m. 1≤n,m≤2e5 接下来  m  行， 每行三个整数  x,y,z  代表xy之间有一条边。z的值为0或1，0  代表黑边，1代表白边 输出描述:一行一个整数， 表示最少的白">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-12T16:10:03.000Z">
-<meta property="article:modified_time" content="2020-12-12T16:10:38.285Z">
+<meta property="article:published_time" content="2020-12-13T05:48:23.000Z">
+<meta property="article:modified_time" content="2020-12-13T05:51:21.526Z">
 <meta property="article:author" content="LBLT">
+<meta property="article:tag" content="刷题">
+<meta property="article:tag" content="牛客">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="LBLT的博客" type="application/atom+xml">
@@ -162,7 +164,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      最近的目标确定了
+      1007 Maximum Subsequence Sum (25分)
     </h1>
   
 
@@ -179,7 +181,7 @@
 <!--显示阅读次数完毕-->
         
         <a href="/2020/12/13/%E4%B8%80%E5%AE%9A%E8%A6%81%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AAoi/" class="archive-article-date">
-  	<time datetime="2020-12-12T16:10:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-13</time>
+  	<time datetime="2020-12-13T05:48:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-13</time>
 </a>
         
       </header>
@@ -188,8 +190,15 @@
 
 
       
-        <p>每天都忙于这些无聊的东西，唉。自己还是非常的迷茫，自己本来不想去心理咨询的，被学校抽中了就抱着试试的心态去了<br>自己总是处于间接性踌躇满志的状态，时而紧张时而废，其实自己这样什么都不会得到，理想很丰满，现实很骨感，步子迈大了总会扯到蛋<br>自己还是得加强基础方面的东西，总是在基础方面拉跨，期待下次比赛不会爆零吧，目前目标在明年年底ranting打倒2000吧，希望明年能拿到一块牌子，加油！</p>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>n个点，m条边，每条边分为黑边和白边，现在需要挑一些边出来，使得n个点可以两两联通。由于牛牛特别讨厌白边，所以在挑中的边中，让白边最少，输出白边的条数，如果不能两两联通，输出−1.</p>
+<h1 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h1><p>第一行两个整数n,m. 1≤n,m≤2e5</p>
+<p>接下来  m  行， 每行三个整数  x,y,z  代表xy之间有一条边。z的值为0或1，0  代表黑边，1代表白边</p>
+<h1 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h1><p>一行一个整数， 表示最少的白边数量。如果不能满足题目条件，输出 -1</p>
+<h1 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h1><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4  4</span><br><span class="line">1 2 0</span><br><span class="line">2 3 0</span><br><span class="line">3 4 1</span><br><span class="line">1 4 0</span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
 
+<p>这一题的话其实是并查集的模板题，由于自己荒废了许久，并查集都不会敲了- -，其实看了一眼还是很简单的这题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sc(n) scanf(<span class="meta-string">"%d"</span>,&amp;n);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pr(n) printf(<span class="meta-string">"%d "</span>,n);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 999999</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 9999999</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>; <span class="keyword">char</span> ch = getchar();</span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch)) &#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">		ch = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch)) &#123;</span><br><span class="line">		x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch &amp; <span class="number">15</span>),</span><br><span class="line">			ch = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> x, y, z;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> father[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)father[i] = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (father[x] != x)</span><br><span class="line">		father[x] = <span class="built_in">find</span>(father[x]);</span><br><span class="line">	<span class="keyword">return</span> father[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fa = <span class="built_in">find</span>(a);</span><br><span class="line">	<span class="keyword">int</span> fb = <span class="built_in">find</span>(b);</span><br><span class="line">	<span class="keyword">if</span> (fa == fb)<span class="keyword">return</span>;</span><br><span class="line">	father[fa] = fb;</span><br><span class="line">&#125;</span><br><span class="line">node num[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.z &lt; b.z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; num[i].x &gt;&gt; num[i].y &gt;&gt; num[i].z;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(num, num + m, cmp);</span><br><span class="line">	<span class="keyword">int</span> cnt = n<span class="number">-1</span>,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> xx = <span class="built_in">find</span>(num[i].x);</span><br><span class="line">		<span class="keyword">int</span> yy = <span class="built_in">find</span>(num[i].y);</span><br><span class="line">		<span class="keyword">if</span> (xx != yy) &#123;</span><br><span class="line">			<span class="keyword">if</span> (num[i].z)ans++;</span><br><span class="line">			cnt--;</span><br><span class="line">			father[xx] = yy;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (cnt)<span class="built_in">cout</span> &lt;&lt; <span class="string">"-1"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -197,7 +206,41 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">牛客</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/牛客//" class="article-tag-list-link color3">牛客</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -260,6 +303,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/12/13/%E9%BB%91%E7%99%BD%E8%BE%B9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          PAT-A-1068
+        
+      </div>
+    </a>
   
   
     <a href="/2020/12/12/%E7%9C%8B%E5%88%B0%E4%B8%80%E6%9D%A1%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%9F%A5%E4%B9%8E/" id="article-nav-older" class="article-nav-link-wrap">
@@ -330,7 +382,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 LBLT
+    		&copy; 2021 LBLT
     	</div>
       	<div class="footer-right">
 
@@ -353,7 +405,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 LBLT
+    		&copy; 2021 LBLT
     	</div>
       	<div class="footer-right">
       		<!--# PV方式，单个用户连续点击 n 篇，记录 n 次记录值-->
@@ -471,6 +523,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">牛客网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">牛客</a>
               </li>
             
             <div class="clearfix"></div>
