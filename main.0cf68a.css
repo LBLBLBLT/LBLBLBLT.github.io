@@ -167,3 +167,185 @@ https://ianlunn.github.io/Hover/ */
 }
 /*版权声明的样式》*/
 
+/* 页面头部：包含‘今日诗词’，站内搜索 */
+.page-header {
+    position: relative;
+    border: 1px solid #fff;
+    margin: 5px 30px 4px 30px;
+    background: #fff;
+    -webkit-transition: all 0.2s ease-in;
+    height:45px;
+    font-family: '微软雅黑';
+    border-radius:5px;
+    padding-left:10px;
+}
+
+/* 今日诗词 */
+#jinrishici-sentence{
+  color:#27d7a1;
+  padding-left: 10px;
+  line-height: 45px;
+  font-size: 15px;
+}
+/*适配手机的搜索功能*/
+@media screen and (max-width:800px) {
+.page-header {
+    position: relative;
+    border: 1px solid #fff;
+    /* margin: 5px 30px 4px 30px; */
+    background: #fff;
+    -webkit-transition: all 0.2s ease-in;
+    height: 45px;
+    font-family: '微软雅黑';
+    border-radius: 5px;
+    padding-left: 2px;
+}
+}
+
+
+/* 文章中的超链接,鼠标悬浮特效*/
+.article-entry a{
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+    font-family: lucida console;/* 这种字体的英文比较好看（像代码样式） */
+}
+/* 鼠标悬浮时，变色 */
+.article-entry a:hover{
+    color: #d7191a;
+    transition:.8s;
+}
+/* 鼠标悬浮时，下划线从中间向两边延伸 */
+.article-entry a:hover::after{
+  transform: scaleX(1);
+  /* 旋转，与transform连用；这里作用：鼠标悬浮时，底部的下划线从中间扩散到两边。
+   bottom right :左到右出现，左到右消失（需配合上面的::after）
+  */
+  transform-origin: bottom center;
+}
+/* 鼠标移开后，下划线从两边向中间消失 */
+.article-entry a::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  /* 详见：https://www.w3school.com.cn/cssref/pr_transform-origin.asp,
+  旋转，与transform连用；这里作用：鼠标移开后，底部的下划线从中间开始消失 */
+  transform-origin: bottom center;
+  transition: transform 0.5s ease-out;
+}
+
+/* 这个字体不错font-family: STCaiyun,STXingkai; */
+.left-col #header .header-menu {
+    font-family: STCaiyun,STXingkai;
+    line-height: 31px;
+    text-transform: uppercase;
+    float: none;
+    min-height: 150px;
+    margin-left: -12px;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+a {
+    background:transparent;
+    text-decoration:none;
+    color:#08c;
+	/* 如果超长，自动截断 */
+    word-wrap:break-word;
+    word-break:break-all;
+}
+.article-entry blockquote {
+    background:#ddd;
+    border-left:5px solid #ccc;
+    padding:15px 20px;
+    margin-top:10px;
+    border-left:5px solid #657b83;
+    background:#f6f6f6;
+    /* 如果超长，自动截断 */
+    word-wrap:break-word;
+    word-break:break-all;
+}
+
+
+/* 行内代码块``的样式，参考csdn的
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 2px;
+    padding: 2px 4px;
+*/
+.article-entry li code, .article-entry p code {
+	color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 2px;
+    padding:2px 4px;
+    margin:0 3px;
+    /* background:#ddd; */
+    /* border:2px solid #ccc; */
+    font-family:Menlo, Monaco, Andale Mono, lucida console, Courier New, monospace;
+    word-wrap:break-word;
+    /* font-size:14px */
+}
+
+/* 标题中的代码块样式 */
+.article-entry code {
+    /* background:#eee;
+    padding:0 .3em;
+    border:none */
+    color: #c7254e;
+    background-color: rgba(249,242,244,.7);
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 3px;
+    font-family: Menlo,Monaco,Andale Mono,lucida console,Courier New,monospace;
+    word-wrap: break-word
+}
+
+
+/* 代码块样式之评论：黄色 */
+pre .comment {
+    color:#ffec8b
+}
+/* 代码块样式之类的参数、函数的关键字、关键字：蓝色 */
+pre .class .params, pre .function .keyword, pre .keyword, pre .literal {
+    color:#66d9ef
+}
+/* 代码块样式之css的属性值、函数名、参数、标签：白色 */
+pre .css .value, pre .doctype, pre .function, pre .params, pre .tag {
+    color:#fff
+	/* color:#66d9ef; */
+}
+/* 代码块样式之HTML或者xml的头部元素：红色(颜色较浅) */
+pre .meta{
+    color:#f78da1;
+}
+/* 代码块样式之HTML的标签：红色 */
+pre .tag .name {
+    /* color:#dc3958; */
+	 color:#ff6481;
+}
+/* 代码块样式之：色 */
+pre .at_rule, pre .at_rule .keyword, pre .css~* .tag, pre .preprocessor, pre .preprocessor .keyword, pre .title{
+    color:#fa9400
+}
+/* 代码块样式之属性、类、函数的title：绿色 */
+pre .attr,pre .attribute, pre .built_in, pre .class, pre .css~* .class, pre .function .title {
+    color:#a6e22e
+}
+/* 代码块样式之字符串、属性值：猪肝色 */
+pre .string, pre .value {
+    color:#e6db74
+}
+/* 代码块样式之数字：粉红色 */
+pre .number {
+    color:#ffe4b5
+}
+pre .css~* .id, pre .id {
+    color:#fd971f
+}
