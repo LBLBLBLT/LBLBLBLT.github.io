@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lblblblt.github.io">
-  <title>Archives | LBLT的博客</title>
+  <title>每日刷题（8） | LBLT的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="LBLT的博客">
-<meta property="og:url" content="https://lblblblt.github.io/archives/page/2/index.html">
+  <meta name="description" content="1. Database1.1. 题目链接：https:&#x2F;&#x2F;vjudge.z180.cn&#x2F;problem&#x2F;UVA-210来源：uva 题目描述Programs executed concurrently on a uniprocessor system appear to be executed at the same time, butin reality the single CPU alter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日刷题（8）">
+<meta property="og:url" content="https://lblblblt.github.io/2021/01/26/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%208/index.html">
 <meta property="og:site_name" content="LBLT的博客">
+<meta property="og:description" content="1. Database1.1. 题目链接：https:&#x2F;&#x2F;vjudge.z180.cn&#x2F;problem&#x2F;UVA-210来源：uva 题目描述Programs executed concurrently on a uniprocessor system appear to be executed at the same time, butin reality the single CPU alter">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-26T02:30:28.000Z">
+<meta property="article:modified_time" content="2021-01-26T02:29:41.031Z">
 <meta property="article:author" content="LBLT">
+<meta property="article:tag" content="刷题">
+<meta property="article:tag" content="vj">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="LBLT的博客" type="application/atom+xml">
@@ -181,36 +187,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-牛客网每日刷题 8" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      每日刷题（8）
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/01/26/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%208/" class="archive-article-date">
+  	<time datetime="2021-01-26T02:30:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+
+
+      
+        <h1 id="1-Database"><a href="#1-Database" class="headerlink" title="1. Database"></a>1. Database</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p>链接：<a href="https://vjudge.z180.cn/problem/UVA-210" target="_blank" rel="noopener">https://vjudge.z180.cn/problem/UVA-210</a><br>来源：uva</p>
+<p>题目描述<br>Programs executed concurrently on a uniprocessor system appear to be executed at the same time, but<br>in reality the single CPU alternates between the programs, executing some number of instructions from<br>each program before switching to the next. You are to simulate the concurrent execution of up to ten<br>programs on such a system and determine the output that they will produce.<br>The program that is currently being executed is said to be running, while all programs awaiting<br>execution are said to be ready. A program consists of a sequence of no more than 25 statements, one<br>per line, followed by an end statement. The statements available are listed below.<br>Statement Type Syntax<br>Assignment variable = constant<br>Output print variable<br>Begin Mutual Exclusion lock<br>End Mutual Exclusion unlock<br>Stop Execution end<br>A variable is any single lowercase alphabetic character and a constant is an unsigned decimal number less than 100. There are only 26 variables in<br>the computer system, and they are shared among<br>the programs. Thus assignments to a variable<br>in one program affect the value that might be<br>printed by a different program. All variables are<br>initially set to zero.<br>Each statement requires an integral number of time units to execute. The running program is<br>permitted to continue executing instructions for a period of time called its quantum. When a program’s<br>time quantum expires, another ready program will be selected to run. Any instruction currently being<br>executed when the time quantum expires will be allowed to complete.<br>Programs are queued first-in-first-out for execution in a ready queue. The initial order of the ready<br>queue corresponds to the original order of the programs in the input file. This order can change,<br>however, as a result of the execution of lock and unlock statements.<br>The lock and unlock statements are used whenever a program wishes to claim mutually exclusive<br>access to the variables it is manipulating. These statements always occur in pairs, bracketing one or<br>more other statements. A lock will always precede an unlock, and these statements will never be<br>nested. Once a program successfully executes a lock statement, no other program may successfully<br>execute a lock statement until the locking program runs and executes the corresponding unlock<br>statement. Should a running program attempt to execute a lock while one is already in effect, this<br>program will be placed at the end of the blocked queue. Programs blocked in this fashion lose any of their<br>current time quantum remaining. When an unlock is executed, any program at the head of the blocked<br>queue is moved to the head of the ready queue. The first statement this program will execute when<br>it runs will be the lock statement that previously failed. Note that it is up to the programs involved<br>to enforce the mutual exclusion protocol through correct usage of lock and unlock statements. (A<br>renegade program with no lock/unlock pair could alter any variables it wished, despite the proper use<br>of lock/unlock by the other programs.)</p>
+<p>输入描述:<br>The input begins with a single positive integer on a line by itself indicating the number of the cases<br>following, each of them as described below. This line is followed by a blank line, and there is also a<br>blank line between two consecutive inputs.<br>The first line of the input file consists of seven integers separated by spaces. These integers specify<br>(in order): the number of programs which follow, the unit execution times for each of the five statements<br>(in the order given above), and the number of time units comprising the time quantum. The remainder<br>of the input consists of the programs, which are correctly formed from statements according to the<br>rules described above.<br>All program statements begin in the first column of a line. Blanks appearing in a statement should<br>be ignored. Associated with each program is an identification number based upon its location in the<br>input data (the first program has ID = 1, the second has ID = 2, etc.).</p>
+<p>输出描述:<br>For each test case, the output must follow the description below. The outputs of two consecutive cases<br>will be separated by a blank line.<br>Your output will contain of the output generated by the print statements as they occur during the<br>simulation. When a print statement is executed, your program should display the program ID, a colon,<br>a space, and the value of the selected variable. Output from separate print statements should appear<br>on separate lines.</p>
+<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><p>样例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">3 1 1 1 1 1 1</span><br><span class="line">a &#x3D; 4</span><br><span class="line">print a</span><br><span class="line">lock</span><br><span class="line">b &#x3D; 9</span><br><span class="line">print b</span><br><span class="line">unlock</span><br><span class="line">print b</span><br><span class="line">end</span><br><span class="line">a &#x3D; 3</span><br><span class="line">print a</span><br><span class="line">lock</span><br><span class="line">b &#x3D; 8</span><br><span class="line">print b</span><br><span class="line">unlock</span><br><span class="line">print b</span><br><span class="line">end</span><br><span class="line">b &#x3D; 5</span><br><span class="line">a &#x3D; 17</span><br><span class="line">print a</span><br><span class="line">print b</span><br><span class="line">lock</span><br><span class="line">b &#x3D; 21</span><br><span class="line">print b</span><br><span class="line">unlock</span><br><span class="line">print b</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1: 3</span><br><span class="line">2: 3</span><br><span class="line">3: 17</span><br><span class="line">3: 9</span><br><span class="line">1: 9</span><br><span class="line">1: 9</span><br><span class="line">2: 8</span><br><span class="line">2: 8</span><br><span class="line">3: 21</span><br><span class="line">3: 21</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>有很多坑点，这题的主要思想是模拟多线程运行程序，所以每一行指令要用数组来映射。。。<br>这题目理解难度（一定是我太菜了）还挺大的，理解了题目的要求还是有坑点，比如说lock如果没声明成全局变量也会wa<br>而且其实题目他是有多个样例的，但是vj和紫书上都没说，也挺坑的。。。不过写出代码后难度也就那样吧<br>加油！！</p>
+<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;deque&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 9999999</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sc(x) scanf(<span class="meta-string">"%d"</span>,&amp;x)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pr(x) printf(<span class="meta-string">"%d"</span>,x)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fr(i) for(i=0;i&lt;10;i++);</span></span><br><span class="line"><span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt;q;<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; dq;</span><br><span class="line"><span class="keyword">int</span> tm[<span class="number">5</span>],num[maxn],h[maxn];</span><br><span class="line"><span class="keyword">int</span> n,Q;</span><br><span class="line"><span class="keyword">bool</span> lock=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; op[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> opt=Q;</span><br><span class="line">    <span class="keyword">while</span>(opt&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">string</span> s=op[x][h[x]];</span><br><span class="line">        <span class="keyword">if</span>(s[<span class="number">2</span>]==<span class="string">'='</span>)&#123;</span><br><span class="line">            opt-=tm[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> v=s[<span class="number">4</span>]-<span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">if</span>(s.<span class="built_in">size</span>()==<span class="number">6</span>)v=(v*<span class="number">10</span>)+(s[<span class="number">5</span>]-<span class="string">'0'</span>);</span><br><span class="line">            num[s[<span class="number">0</span>]]=v;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">2</span>]==<span class="string">'i'</span>)&#123;</span><br><span class="line">            opt-=tm[<span class="number">1</span>];</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="string">": "</span>&lt;&lt;num[s[<span class="number">6</span>]]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">2</span>]==<span class="string">'c'</span>)&#123;</span><br><span class="line">            opt-=tm[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">if</span>(lock)&#123;</span><br><span class="line">                q.push(x);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> lock=<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">2</span>]==<span class="string">'l'</span>)&#123;</span><br><span class="line">            lock=<span class="number">0</span>;</span><br><span class="line">            opt-=tm[<span class="number">3</span>];</span><br><span class="line">            <span class="keyword">if</span>(!q.empty())&#123;</span><br><span class="line">                <span class="keyword">int</span> v=q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                dq.push_front(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span>;</span><br><span class="line">        ++h[x];</span><br><span class="line">    &#125;</span><br><span class="line">    dq.push_back(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;<span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;tm[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;Q;</span><br><span class="line">        <span class="built_in">string</span> s;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            op[i].<span class="built_in">clear</span>();</span><br><span class="line">            <span class="keyword">while</span>(getline(<span class="built_in">cin</span>,s))&#123;</span><br><span class="line">                <span class="keyword">if</span>(s==<span class="string">""</span>)<span class="keyword">continue</span>;</span><br><span class="line">                op[i].push_back(s);</span><br><span class="line">                <span class="keyword">if</span>(s==<span class="string">"end"</span>)<span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            dq.push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memset</span>(h,<span class="number">0</span>,<span class="keyword">sizeof</span>(h));</span><br><span class="line">        <span class="built_in">memset</span>(num,<span class="number">0</span>,<span class="keyword">sizeof</span>(num));</span><br><span class="line">        <span class="keyword">while</span>(!dq.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> top=dq.front();</span><br><span class="line">            dq.pop_front();</span><br><span class="line">            function(top);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(T)<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/13/%E4%B8%80%E5%AE%9A%E8%A6%81%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AAoi/" class="archive-article-date">
-  	<time datetime="2020-12-13T05:48:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/13/%E4%B8%80%E5%AE%9A%E8%A6%81%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AAoi/">1007 Maximum Subsequence Sum (25分)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -220,13 +245,13 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">牛客</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vj</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -240,509 +265,139 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/牛客//" class="article-tag-list-link color3">牛客</a>
+        			<a href="/categories/学习/刷题/vj//" class="article-tag-list-link color3">vj</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/vj/刘汝佳//" class="article-tag-list-link color4">刘汝佳</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lblblblt.github.io/2021/01/26/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%208/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/12/%E7%9C%8B%E5%88%B0%E4%B8%80%E6%9D%A1%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%9F%A5%E4%B9%8E/" class="archive-article-date">
-  	<time datetime="2020-12-12T14:09:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/20/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%207/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">牛客网每日刷题(7)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/12/%E7%9C%8B%E5%88%B0%E4%B8%80%E6%9D%A1%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%9F%A5%E4%B9%8E/">看到一条有意思的知乎</a>
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+
+
+      <div class="valine_comment"></div>
+<!--����js����<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/null"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"search":null,"path":"search.xml","field":"all","log":false});</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/null"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"search":null,"path":"search.xml","field":"all","log":false});</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/null"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"search":null,"path":"search.xml","field":"all","log":false});</script></body>֮ǰ���뼴��-->
+<!--Leancloud ������:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine �ĺ��Ĵ����-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var notify = 'false //邮件提醒' == true ? true : false;
+  var verify = 'true //评论时是否有验证码，需要在Leancloud 设置-&gt;安全中心 中打开' == true ? true : false;
+  new Valine({
+      // AV ����������������av-min.js(��˾���ǲ�Ҫ���� ����������)
+      av: AV,
+      el: '.valine_comment',
+      emoticon_url: 'https://cloud.panjunwen.com/alu',
+      emoticon_list: ["��.png","��˵��.png","��.png","����.png","�׻�.png","������.png","�е�.png","����.png","��ü.png","С�۾�.png","���ع۲�.png"],
+      app_id: 'ypqs3TgCgXFgL5YBddo43w5v-gzGzoHsz',
+      app_key: 'FdqEuplPBjEUckGcKi5qL7ht',
+      placeholder: '留下你的评论吧！！'
+    });
+</script>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/27/%E5%87%86%E5%A4%87%E6%8A%8A%E8%BF%99%E5%84%BF%E8%A3%85%E4%BF%AE%E4%B8%80%E4%B8%8B/" class="archive-article-date">
-  	<time datetime="2020-07-27T05:12:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/27/%E5%87%86%E5%A4%87%E6%8A%8A%E8%BF%99%E5%84%BF%E8%A3%85%E4%BF%AE%E4%B8%80%E4%B8%8B/">准备把自己的博客再装修装修</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/27/PAT-A-1007/" class="archive-article-date">
-  	<time datetime="2020-07-27T02:15:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/27/PAT-A-1007/">1007 Maximum Subsequence Sum (25分)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/27/PAT-A-1006/" class="archive-article-date">
-  	<time datetime="2020-07-27T02:10:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/27/PAT-A-1006/">1006 Sign In and Sign Out (25分)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/27/PAT-A-1005/" class="archive-article-date">
-  	<time datetime="2020-07-27T02:05:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/27/PAT-A-1005/">1005 Spell It Right (20分)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/27/PAT-A-1004/" class="archive-article-date">
-  	<time datetime="2020-07-27T01:50:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/27/PAT-A-1004/">1004 Counting Leaves (30分)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/25/PAT-A-1003/" class="archive-article-date">
-  	<time datetime="2020-07-25T03:40:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/25/PAT-A-1003/">1003 Emergency (25分)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/25/PAT-A-1002/" class="archive-article-date">
-  	<time datetime="2020-07-25T03:30:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/25/PAT-A-1002/">1002 A+B for Polynomials (25分)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/25/PAT-A-1001/" class="archive-article-date">
-  	<time datetime="2020-07-25T03:27:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/25/PAT-A-1001/">1001 A+B Format (20分)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+ 
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &amp;raquo;</a>
-    </nav>
   
+
+  
+
+  
+
 
 
           </div>
@@ -803,8 +458,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
