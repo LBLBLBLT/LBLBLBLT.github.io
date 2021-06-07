@@ -255,6 +255,321 @@
 
 
   
+    <article id="post-抄的代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/23/%E6%8A%84%E7%9A%84%E4%BB%A3%E7%A0%81/">python一个小游戏(抄的)</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/03/23/%E6%8A%84%E7%9A%84%E4%BB%A3%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2021-03-23T11:43:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+
+      
+        <p>突然有点理解Python为什么这几年突然崛起的原因了，库完全就拿别人的就行了，自己只需要把造好的轮子装上即可<br>傻瓜式的函数调用编程简直无语了- -就算是个脑瘫进培训班也能写代码<br>唉，可惜我还是用不习惯python啊<br>更改了一下，能够像是正常的贪吃蛇了。。。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> pygame.locals <span class="keyword">import</span> *</span><br><span class="line">caption_width = <span class="number">500</span></span><br><span class="line">caption_height = <span class="number">500</span></span><br><span class="line">white_color = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">black_color = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">get_title = <span class="string">'Hello World'</span></span><br><span class="line">cell = <span class="number">10</span></span><br><span class="line">snake_init_pos = [[<span class="number">250</span>, <span class="number">250</span>], [<span class="number">240</span>, <span class="number">250</span>], [<span class="number">230</span>, <span class="number">250</span>], [<span class="number">220</span>, <span class="number">250</span>]]</span><br><span class="line">food_pos = [random.randrange(<span class="number">1</span>, <span class="number">50</span>) * <span class="number">10</span>, random.randrange(<span class="number">1</span>, <span class="number">50</span>) * <span class="number">10</span>]</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line">caption = pygame.display.set_mode((caption_width, caption_height))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_rect</span><span class="params">(color, position)</span>:</span></span><br><span class="line">    pygame.draw.rect(caption, color, pygame.Rect(position[<span class="number">0</span>], position[<span class="number">1</span>], cell, cell))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hit_the_self</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> snake_init_pos[<span class="number">0</span>] <span class="keyword">in</span> snake_init_pos[<span class="number">1</span>:]:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hit_the_wall</span><span class="params">(head_pos)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> head_pos[<span class="number">0</span>] &gt;= caption_width <span class="keyword">or</span> head_pos[<span class="number">0</span>] &lt; <span class="number">0</span> <span class="keyword">or</span> head_pos[<span class="number">1</span>] &gt;= caption_height <span class="keyword">or</span> caption_height &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_direction</span><span class="params">(head_pos)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> food_pos</span><br><span class="line">    snake_init_pos.insert(<span class="number">0</span>, list(head_pos))</span><br><span class="line">    <span class="keyword">if</span> head_pos != food_pos:</span><br><span class="line">        snake_init_pos.pop()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        food_pos = [random.randrange(<span class="number">1</span>, <span class="number">50</span>) * <span class="number">10</span>, random.randrange(<span class="number">1</span>, <span class="number">50</span>) * <span class="number">10</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> hit_the_self() <span class="keyword">or</span> hit_the_wall(head_pos):</span><br><span class="line">        print(<span class="string">"Game Over"</span>)</span><br><span class="line">        pygame.quit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> pos <span class="keyword">in</span> snake_init_pos:</span><br><span class="line">        draw_rect(white_color, pos)</span><br><span class="line">    draw_rect(white_color, food_pos)</span><br><span class="line">    pygame.display.update()</span><br><span class="line">    head_pos = [<span class="number">250</span>, <span class="number">250</span>]</span><br><span class="line">    xcell = <span class="number">0</span></span><br><span class="line">    ycell = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.type == pygame.KEYDOWN:</span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.K_LEFT:</span><br><span class="line">                    print(<span class="string">"left"</span>)</span><br><span class="line">                    xcell = -cell</span><br><span class="line">                    ycell = <span class="number">0</span></span><br><span class="line">                    <span class="comment"># change_direction(head_pos)</span></span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_RIGHT:</span><br><span class="line">                    print(<span class="string">"right"</span>)</span><br><span class="line">                    xcell = cell</span><br><span class="line">                    ycell = <span class="number">0</span></span><br><span class="line">                    <span class="comment"># change_direction(head_pos)</span></span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_UP:</span><br><span class="line">                    print(<span class="string">"up"</span>)</span><br><span class="line">                    ycell = -cell</span><br><span class="line">                    xcell = <span class="number">0</span></span><br><span class="line">                    <span class="comment"># change_direction(head_pos)</span></span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_DOWN:</span><br><span class="line">                    print(<span class="string">"down"</span>)</span><br><span class="line">                    ycell = cell</span><br><span class="line">                    xcell = <span class="number">0</span></span><br><span class="line">                    <span class="comment"># change_direction(head_pos)</span></span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.KEYUP:</span><br><span class="line">                    xcell = <span class="number">0</span></span><br><span class="line">                    ycell = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span>(xcell != <span class="number">0</span>):</span><br><span class="line">            head_pos[<span class="number">0</span>] += xcell</span><br><span class="line">            change_direction(head_pos)</span><br><span class="line">        <span class="keyword">if</span>(ycell != <span class="number">0</span>):</span><br><span class="line">            head_pos[<span class="number">1</span>] += ycell</span><br><span class="line">            change_direction(head_pos)</span><br><span class="line">        caption.fill(black_color)</span><br><span class="line">        draw_rect(white_color, food_pos)</span><br><span class="line">        <span class="keyword">for</span> pos <span class="keyword">in</span> snake_init_pos:</span><br><span class="line">            draw_rect(white_color, pos)</span><br><span class="line"></span><br><span class="line">            pygame.display.update()</span><br><span class="line">        clock.tick(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/项目//" class="article-tag-list-link color3">项目</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/项目/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/23/%E6%8A%84%E7%9A%84%E4%BB%A3%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-牛客网每日刷题 9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/20/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%209/">每日刷题（8）</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/03/20/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%209/" class="archive-article-date">
+  	<time datetime="2021-03-20T02:39:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+
+      
+        <h1 id="1-Database"><a href="#1-Database" class="headerlink" title="1. Database"></a>1. Database</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p>链接：<a href="https://ac.nowcoder.com/acm/contest/11168/C" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/11168/C</a><br>来源：牛客网</p>
+<p>题目描述<br>给定一棵 n 个点的带点权的有根树，根节点为 1 。<br>要选出两个节点，满足任意一个不是另一个的祖先节点，最大化以两个节点为根的子树的点权和 。<br>如果选不出两棵合法的子树，则输出“Error”。<br>输入描述:<br>第一行一个正整数 n 。<br>第二行 n 个整数，分别表示 n 个点的点权 。<br>接下来 n  - 1 行，每行两个正整数 u，v 表示 u 和 v 之间有一条连边 。<br>输出描述:<br>一个整数，表示最大的点权和</p>
+<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><p>样例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">10 -5 5 6 7</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2 4</span><br><span class="line">2 5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>这题的题目的意思是要你找出两个父节点不一样的两个节点，使得他们的子树权和最大<br>这里使用dfs递归从底往上更新mx数组，mx数组的意思是mx以下的后代节点的点权和<br>而sum数组的意思是以u为根节点的子树权和<br>使用邻接表储存树即可<br>我们找出最大的和次大的即可</p>
+<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int64_t</span> s64;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>;</span><br><span class="line">ll m, n, minlen, len, cnt = <span class="number">0</span>, q,k,h;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD= <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,l,r) for(int i=l;i&lt;=r;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pre(i,r,l) for(int i=r;i&gt;=l;i--)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">1e18</span>;</span><br><span class="line"><span class="keyword">int</span> tot;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>,ll&gt;mp;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;son[maxn];</span><br><span class="line">ll w[maxn],mx[maxn],sum[maxn];</span><br><span class="line">ll ans=-INF;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    ll maxnum=-INF;sum[u]=w[u];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;son[u].<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v=son[u][i];</span><br><span class="line">        <span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        dfs(v,u);sum[u]+=sum[v];</span><br><span class="line">        <span class="keyword">if</span>(maxnum!=-INF)ans=<span class="built_in">max</span>(ans,maxnum+mx[v]);</span><br><span class="line">        maxnum=<span class="built_in">max</span>(mx[v],maxnum);</span><br><span class="line">    &#125;</span><br><span class="line">    mx[u]=<span class="built_in">max</span>(maxnum,sum[u]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    rep(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    rep(i,<span class="number">1</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> x,y;<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        son[x].push_back(y);</span><br><span class="line">        son[y].push_back(x);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(ans==-INF)<span class="built_in">cout</span>&lt;&lt;<span class="string">"Error\n"</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">牛客</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/牛客//" class="article-tag-list-link color3">牛客</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/牛客/刘汝佳//" class="article-tag-list-link color4">刘汝佳</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/20/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%209/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-每日刷题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/30/%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98/">牛客网每日刷题(3)</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/01/30/%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-01-30T03:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+
+      
+        <h1 id="1-4-Values-Whose-Sum-is-Zero"><a href="#1-4-Values-Whose-Sum-is-Zero" class="headerlink" title="1. 4 Values Whose Sum is Zero"></a>1. 4 Values Whose Sum is Zero</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p>链接：<a href="https://vjudge.z180.cn/problem/UVA-11054" target="_blank" rel="noopener">https://vjudge.z180.cn/problem/UVA-11054</a><br>来源：vjudge</p>
+<p>As you may know from the comic “Asterix and the Chieftain’s Shield”, Gergovia consists of one street,<br>and every inhabitant of the city is a wine salesman. You wonder how this economy works? Simple<br>enough: everyone buys wine from other inhabitants of the city. Every day each inhabitant decides how<br>much wine he wants to buy or sell. Interestingly, demand and supply is always the same, so that each<br>inhabitant gets what he wants.<br>There is one problem, however: Transporting wine from one house to another results in work. Since<br>all wines are equally good, the inhabitants of Gergovia don’t care which persons they are doing trade<br>with, they are only interested in selling or buying a specific amount of wine. They are clever enough<br>to figure out a way of trading so that the overall amount of work needed for transports is minimized.<br>In this problem you are asked to reconstruct the trading during one day in Gergovia. For simplicity<br>we will assume that the houses are built along a straight line with equal distance between adjacent<br>houses. Transporting one bottle of wine from one house to an adjacent house results in one unit of<br>work.<br>Input<br>The input consists of several test cases. Each test case starts with the number of inhabitants n<br>(2 ≤ n ≤ 100000). The following line contains n integers ai (−1000 ≤ ai ≤ 1000). If ai ≥ 0, it<br>means that the inhabitant living in the i-th house wants to buy ai bottles of wine, otherwise if ai &lt; 0,<br>he wants to sell −ai bottles of wine. You may assume that the numbers ai sum up to 0.<br>The last test case is followed by a line containing ‘0’.<br>Output<br>For each test case print the minimum amount of work units needed so that every inhabitant has his<br>demand fulfilled. You may assume that this number fits into a signed 64-bit integer (in C/C++ you<br>can use the data type “long long”, in JAVA the data type “long”).</p>
+<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">5 -4 1 -3 1</span><br><span class="line">6</span><br><span class="line">-1000 -1000 -1000 1000 1000 1000</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">9000</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>把a+b+c+d=0的问题转化成a+b=-(c+d)问题<br>写一个map然后加起来即可</p>
+<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxnn = <span class="number">100000</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> a[maxnn],b[maxnn],c[maxnn],d[maxnn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">int</span> kase=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(kase==<span class="number">0</span>)kase++;<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">int</span> n;<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;b[i];</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;c[i];</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;d[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;mp;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                mp[a[i]+b[j]]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                cnt+=mp[-(c[i]+d[j])];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;cnt&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">紫书</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/刷题/刘汝佳//" class="article-tag-list-link color4">刘汝佳</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/30/%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-牛客网每日刷题 8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -932,338 +1247,6 @@
 
 
   
-    <article id="post-牛客网每日刷题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/07/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98/">牛客网每日刷题(3)</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2021/01/07/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2021-01-07T06:42:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-
-      
-        <h1 id="1-CCA的图"><a href="#1-CCA的图" class="headerlink" title="1. CCA的图"></a>1. CCA的图</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p>链接：<a href="https://ac.nowcoder.com/acm/problem/213878" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/problem/213878</a><br>来源：牛客网</p>
-<p>题目描述<br>是不是经常向往外面的天空呢？那就来一场说走就走的旅行吧！<br>你现在在 s 号城市，想去 t 号城市，城市间有双向道路，保证任意两座城市可以通过这些道路相互到达。<br>但是出去的人太多了，以至于政府不得不给每条道路打上标记，这个标记是一个数字，政府会规定人们只能走标记在 [L , R] 内的道路。<br>现在你想求出在 L，R 分别等于多少时，你可以顺利到达 t 号城市，要求 L 尽可能大，在 L 最大的情况下 R 尽可能小 。 </p>
-<p>输入描述:<br>第一行四个正整数，n , m , s , t ，分别表示城市数量，道路数量和起点、终点城市编号 。<br>接下来的 m 行，每行三个正整数 u , v , w ，表示有一条连接 u，v 的双向道路，其标记为 w 。</p>
-<p>输出描述:<br>一行，两个正整数，表示最大的 L 和 在 L 最大的情况下最小的 R 。</p>
-<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 4 1 4</span><br><span class="line">1 3 3</span><br><span class="line">1 2 2</span><br><span class="line">3 4 2</span><br><span class="line">1 4 1</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 3</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n &lt;&#x3D; 10^6 , m &lt;&#x3D; 3 × 10^6 ， s,t,u,v &lt;&#x3D; n , w &lt;&#x3D; 10^9</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>并查集的应用，还以为是每并一个dfs一次，没想到直接并就行了，<br>每一次并就检查一下是否联通，L从最大开始并,R从L之后开始并<br>没看清题目限制数据WA了N发，第二是没有注意到节点是从1开始的又WA了N发<br>第三则是输入输出的时间限制也被卡了，也WA了N发-_-真是无奈呢😔</p>
-<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">3e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2e9</span></span><br><span class="line"><span class="keyword">int</span> f[maxn];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sc(n) scanf(<span class="meta-string">"%d"</span>,&amp;n)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y,w;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> node &amp;x)<span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w&lt;x.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">node a[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x!=f[x])</span><br><span class="line">    f[x]=<span class="built_in">find</span>(f[x]);</span><br><span class="line">    <span class="keyword">return</span> f[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unionset</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fa=<span class="built_in">find</span>(a);</span><br><span class="line">    <span class="keyword">int</span> fb=<span class="built_in">find</span>(b);</span><br><span class="line">    f[fa]=fb;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,s,t,ansl,ansr,L,R;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)f[i]=i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;n,&amp;m,&amp;s,&amp;t);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,a[i].x,a[i].y,a[i].w);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a+<span class="number">1</span>,a+m+<span class="number">1</span>);</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">int</span> S=<span class="built_in">find</span>(s),T=<span class="built_in">find</span>(t);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=m;i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">        unionset(a[i].x,a[i].y);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">find</span>(s)==<span class="built_in">find</span>(t))&#123;</span><br><span class="line">            L=i;</span><br><span class="line">            ansl=a[i].w;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=L;i&lt;=m;i++)&#123;</span><br><span class="line">        unionset(a[i].x,a[i].y);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">find</span>(s)==<span class="built_in">find</span>(t))&#123;</span><br><span class="line">            R=i;</span><br><span class="line">            ansr=a[i].w;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d"</span>,ansl,ansr);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">牛客网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/牛客网//" class="article-tag-list-link color4">牛客网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/07/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-牛客网每日刷题 2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/06/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%202/">牛客网每日刷题(2)</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2021/01/06/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%202/" class="archive-article-date">
-  	<time datetime="2021-01-06T03:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-
-      
-        <h1 id="1-锦标赛"><a href="#1-锦标赛" class="headerlink" title="1. 锦标赛"></a>1. 锦标赛</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p>链接：<a href="https://ac.nowcoder.com/acm/problem/13223" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/problem/13223</a><br>来源：牛客网</p>
-<p>组委会正在为美团点评CodeM大赛的决赛设计新赛制。</p>
-<p>比赛有 n 个人参加（其中 n 为2的幂），每个参赛者根据资格赛和预赛、复赛的成绩，会有不同的积分。比赛采取锦标赛赛制，分轮次进行，设某一轮有 m 个人参加，那么参赛者会被分为 m/2 组，每组恰好 2 人，m/2 组的人分别厮杀。我们假定积分高的人肯定获胜，若积分一样，则随机产生获胜者。获胜者获得参加下一轮的资格，输的人被淘汰。重复这个过程，直至决出冠军。</p>
-<p>现在请问，参赛者小美最多可以活到第几轮（初始为第0轮）？</p>
-<p>输入描述:<br>第一行一个整数 n (1≤n≤ 2^20)，表示参加比赛的总人数。</p>
-<p>接下来 n 个数字（数字范围：-1000000…1000000），表示每个参赛者的积分。</p>
-<p>小美是第一个参赛者。<br>输出描述:<br>小美最多参赛的轮次。</p>
-<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">4 1 2 3</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>这题的思想比较巧妙，因为数据只需要读取一次即可，没有必要储存<br>首先是比小美分数小的才需要统计，再加上小美本人，对统计结果取log2即可</p>
-<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2e9</span></span><br><span class="line"><span class="keyword">int</span> a[maxn],b[maxn];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,a,cnt=<span class="number">0</span>;<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> b;<span class="built_in">cin</span>&gt;&gt;b;</span><br><span class="line">        <span class="keyword">if</span>(b&lt;a)cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;(<span class="keyword">int</span>)log2(++cnt);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">牛客网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/牛客网//" class="article-tag-list-link color4">牛客网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/06/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%202/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-牛客网每日刷题 3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/06/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%203/">牛客网每日刷题(2)</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2021/01/06/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%203/" class="archive-article-date">
-  	<time datetime="2021-01-06T03:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-
-      
-        <h1 id="1-锦标赛"><a href="#1-锦标赛" class="headerlink" title="1. 锦标赛"></a>1. 锦标赛</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p>链接：<a href="https://ac.nowcoder.com/acm/problem/13223" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/problem/13223</a><br>来源：牛客网</p>
-<p>组委会正在为美团点评CodeM大赛的决赛设计新赛制。</p>
-<p>比赛有 n 个人参加（其中 n 为2的幂），每个参赛者根据资格赛和预赛、复赛的成绩，会有不同的积分。比赛采取锦标赛赛制，分轮次进行，设某一轮有 m 个人参加，那么参赛者会被分为 m/2 组，每组恰好 2 人，m/2 组的人分别厮杀。我们假定积分高的人肯定获胜，若积分一样，则随机产生获胜者。获胜者获得参加下一轮的资格，输的人被淘汰。重复这个过程，直至决出冠军。</p>
-<p>现在请问，参赛者小美最多可以活到第几轮（初始为第0轮）？</p>
-<p>输入描述:<br>第一行一个整数 n (1≤n≤ 2^20)，表示参加比赛的总人数。</p>
-<p>接下来 n 个数字（数字范围：-1000000…1000000），表示每个参赛者的积分。</p>
-<p>小美是第一个参赛者。<br>输出描述:<br>小美最多参赛的轮次。</p>
-<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">4 1 2 3</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>这题的思想比较巧妙，因为数据只需要读取一次即可，没有必要储存<br>首先是比小美分数小的才需要统计，再加上小美本人，对统计结果取log2即可</p>
-<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2e9</span></span><br><span class="line"><span class="keyword">int</span> a[maxn],b[maxn];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,a,cnt=<span class="number">0</span>;<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> b;<span class="built_in">cin</span>&gt;&gt;b;</span><br><span class="line">        <span class="keyword">if</span>(b&lt;a)cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;(<span class="keyword">int</span>)log2(++cnt);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">牛客网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/牛客网//" class="article-tag-list-link color4">牛客网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/06/%E7%89%9B%E5%AE%A2%E7%BD%91%E6%AF%8F%E6%97%A5%E5%88%B7%E9%A2%98%203/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1435,6 +1418,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vj</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">项目</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">紫书</a>
               </li>
             
             <div class="clearfix"></div>
