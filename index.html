@@ -255,6 +255,104 @@
 
 
   
+    <article id="post-补充一个之前写的合成大西瓜游戏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/02/%E8%A1%A5%E5%85%85%E4%B8%80%E4%B8%AA%E4%B9%8B%E5%89%8D%E5%86%99%E7%9A%84%E5%90%88%E6%88%90%E5%A4%A7%E8%A5%BF%E7%93%9C%E6%B8%B8%E6%88%8F/">补一下之前写的python合成大罗马</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/11/02/%E8%A1%A5%E5%85%85%E4%B8%80%E4%B8%AA%E4%B9%8B%E5%89%8D%E5%86%99%E7%9A%84%E5%90%88%E6%88%90%E5%A4%A7%E8%A5%BF%E7%93%9C%E6%B8%B8%E6%88%8F/" class="archive-article-date">
+  	<time datetime="2021-11-02T14:43:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+
+      
+        <p>之前python课程设计的作业<br>没有什么新意，就是用python写了个合成大罗马<br>不过自己对库的使用理解更深了</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pygame.draw <span class="keyword">import</span> rect</span><br><span class="line"><span class="keyword">import</span> pymunk</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> moviepy.editor <span class="keyword">import</span> VideoFileClip</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pymunk <span class="keyword">import</span> pygame_util</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pymunk.vec2d <span class="keyword">import</span> Vec2d</span><br><span class="line"></span><br><span class="line">space = pymunk.Space()</span><br><span class="line">space.gravity = (<span class="number">0</span>,<span class="number">900</span>)</span><br><span class="line">Gsp = []</span><br><span class="line">Fruit = [<span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">21</span>, <span class="number">23</span>, <span class="number">29</span>, <span class="number">35</span>, <span class="number">37</span>, <span class="number">50</span>, <span class="number">59</span>, <span class="number">60</span>, <span class="number">78</span>]</span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">initgame</span><span class="params">()</span>:</span></span><br><span class="line">    pygame.font.init()</span><br><span class="line">    pygame.init()</span><br><span class="line">    pygame.mixer.init()</span><br><span class="line">    screen = pygame.display.set_mode((<span class="number">640</span>,<span class="number">800</span>))</span><br><span class="line">    pygame.display.set_caption(<span class="string">"合成正统罗马"</span>)</span><br><span class="line">    <span class="keyword">return</span> screen</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CircleSprite</span><span class="params">(pygame.sprite.Sprite)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        pygame.sprite.Sprite.__init__(self)</span><br><span class="line">        self.image = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ball</span><span class="params">(CircleSprite)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num, position, space, friction=<span class="number">0.1</span>)</span>:</span></span><br><span class="line">        pygame.sprite.Sprite.__init__(self)</span><br><span class="line">        self.mass = Fruit[num] * <span class="number">2</span></span><br><span class="line">        self.r = Fruit[num] * <span class="number">2</span></span><br><span class="line">        self.angle_degree = <span class="number">0</span></span><br><span class="line">        self.images = <span class="string">'image\\罗马\\'</span>+str(num)+<span class="string">'.png'</span></span><br><span class="line">        self.image = pygame.image.load(self.images)</span><br><span class="line">        self.image = pygame.transform.smoothscale(self.image, (self.r * <span class="number">2</span>, self.r * <span class="number">2</span>))</span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        self.rect.x,self.rect.y = position</span><br><span class="line">        self.radius = num</span><br><span class="line">        self.num = num</span><br><span class="line">        self.position = position</span><br><span class="line">        moment = pymunk.moment_for_circle(self.mass, <span class="number">0</span>, self.r)</span><br><span class="line">        self.body = pymunk.Body(self.mass, moment)</span><br><span class="line">        self.body.position = position</span><br><span class="line">        self.shape = pymunk.Circle(self.body, self.r)</span><br><span class="line">        self.shape.friction = friction</span><br><span class="line">        self.elasticity = <span class="number">0.95</span></span><br><span class="line">        self.shape.collision_type = <span class="number">1</span></span><br><span class="line">        self.shape.sprite = self</span><br><span class="line">        space.add(self.body, self.shape)</span><br><span class="line">        self.space = space</span><br><span class="line">        self.count = <span class="number">0</span></span><br><span class="line">        self.gameover = <span class="number">0</span></span><br><span class="line">        self.isclash = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">draw</span><span class="params">(self, screen)</span>:</span></span><br><span class="line">        screen.blit(self.image, (self.body.position.x - self.image.get_width() / <span class="number">2</span>, self.body.position.y - self.image.get_height() / <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update_position</span><span class="params">(self, x, y, angle_degree=<span class="number">0</span>)</span>:</span></span><br><span class="line">        self.rect.x = self.body.position[<span class="number">0</span>]</span><br><span class="line">        self.rect.y = self.body.position[<span class="number">1</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self)</span>:</span></span><br><span class="line">        img2 = pygame.transform.rotate(self.image,-math.degrees(self.body.angle))</span><br><span class="line">        self.update_position(self.position[<span class="number">0</span>],self.position[<span class="number">1</span>])</span><br><span class="line">        screen.blit(img2, (self.body.position.x - img2.get_width() / <span class="number">2</span>, self.body.position.y - img2.get_height() / <span class="number">2</span>))</span><br><span class="line">        <span class="keyword">if</span>(self.body.position.y &lt; <span class="number">120</span>):</span><br><span class="line">            self.count += <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_data</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 加载历史最高分</span></span><br><span class="line">    file_path = <span class="string">"score.txt"</span></span><br><span class="line">    <span class="keyword">with</span> open(file_path, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            high_score = int(f.read())</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            high_score = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> high_score</span><br><span class="line">    </span><br><span class="line">lines = pygame.image.load(<span class="string">"image\\line.png"</span>)</span><br><span class="line"></span><br><span class="line">static_lines = [</span><br><span class="line">        pymunk.Segment(space.static_body, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1000</span>), <span class="number">0.0</span>),</span><br><span class="line">        pymunk.Segment(space.static_body, (<span class="number">640</span>, <span class="number">0</span>), (<span class="number">640</span>, <span class="number">800</span>), <span class="number">0.0</span>),</span><br><span class="line">        pymunk.Segment(space.static_body, (<span class="number">0</span>, <span class="number">800</span>), (<span class="number">640</span>, <span class="number">800</span>), <span class="number">0.0</span>)</span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> static_lines:</span><br><span class="line">            line.elasticity = <span class="number">0.4</span>  <span class="comment"># 弹性系数</span></span><br><span class="line">            line.friction = <span class="number">0.2</span>  <span class="comment"># 摩擦系数</span></span><br><span class="line">            space.add(line)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    screen = initgame()</span><br><span class="line">    over = pygame.mixer.Sound(<span class="string">"image\\ceddin deden.mp3"</span>)</span><br><span class="line">    music = pygame.mixer.Sound(<span class="string">"sound.wav"</span>)</span><br><span class="line">    bg_img = pygame.image.load(<span class="string">"back.png"</span>)</span><br><span class="line">    rd = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>, <span class="number">64</span>]</span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line">    maxtype = <span class="number">1</span></span><br><span class="line">    flag = <span class="number">0</span></span><br><span class="line">    GaO = <span class="number">0</span></span><br><span class="line">    high_score = load_data()</span><br><span class="line">    randomnum = <span class="number">1</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    ico = pygame.image.load(<span class="string">"苏丹.ico"</span>)</span><br><span class="line">    pygame.display.set_icon(ico) <span class="comment"># 可以填img</span></span><br><span class="line">    gameover = pygame.image.load(<span class="string">'image\\GO.png'</span>)</span><br><span class="line">    myfont = pygame.font.Font(<span class="string">'Astrid.ttf'</span>, <span class="number">60</span>)</span><br><span class="line">    clip = VideoFileClip(<span class="string">'抬棺.mp4'</span>) <span class="comment">#视频加载</span></span><br><span class="line">    score = <span class="number">0</span></span><br><span class="line">    nextfruit = pygame.image.load(<span class="string">'image\\罗马\\'</span>+str(num)+<span class="string">'.png'</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span>(GaO == <span class="number">0</span>):</span><br><span class="line">            space.step(<span class="number">1</span>/<span class="number">60</span>) </span><br><span class="line">            <span class="keyword">if</span> flag == <span class="number">1</span>:</span><br><span class="line">                x,y = pygame.mouse.get_pos()</span><br><span class="line">                b = ball(num, (x, <span class="number">0</span>), space)</span><br><span class="line">                Gsp.append(b)</span><br><span class="line">                flag = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">                <span class="keyword">if</span> event.type == pygame.QUIT:</span><br><span class="line">                    pygame.quit()</span><br><span class="line">                    sys.exit()</span><br><span class="line">                <span class="keyword">if</span> event.type == pygame.MOUSEBUTTONDOWN:</span><br><span class="line">                    flag = <span class="number">1</span></span><br><span class="line">                    num = randomnum</span><br><span class="line">                    randomnum = random.randint(<span class="number">1</span>,maxtype)</span><br><span class="line">                    nextfruit = pygame.image.load(<span class="string">'image\\罗马\\'</span>+str(randomnum)+<span class="string">'.png'</span>)</span><br><span class="line">            draw_options = pygame_util.DrawOptions(screen)</span><br><span class="line">            scoreimage = myfont.render(<span class="string">"score: "</span> + str(score), <span class="literal">True</span>, (<span class="number">255</span>,<span class="number">192</span>,<span class="number">203</span>))</span><br><span class="line">            space.debug_draw(draw_options)</span><br><span class="line">            screen.blit(bg_img, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">            screen.blit(lines, (<span class="number">0</span>,<span class="number">120</span>))</span><br><span class="line">            screen.blit(nextfruit, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">            screen.blit(scoreimage, (<span class="number">270</span>, <span class="number">0</span>))</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(Gsp)):</span><br><span class="line">                Gsp[i].update()</span><br><span class="line">                <span class="keyword">if</span>(Gsp[i].radius &gt; maxtype <span class="keyword">and</span> maxtype&lt;=<span class="number">5</span>):</span><br><span class="line">                    maxtype = Gsp[i].radius</span><br><span class="line">                <span class="keyword">if</span> Gsp[i].count &gt; <span class="number">100</span>:</span><br><span class="line">                    GaO = <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> Gsp:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> Gsp:</span><br><span class="line">                    det_x = j.body.position.x - i.body.position.x</span><br><span class="line">                    det_y = j.body.position.y - i.body.position.y</span><br><span class="line">                    <span class="keyword">if</span> i != j <span class="keyword">and</span> math.pow(det_x, <span class="number">2</span>) + math.pow(det_y, <span class="number">2</span>) &lt; math.pow(i.r + j.r + <span class="number">3</span>, <span class="number">2</span>) <span class="keyword">and</span> i.num == j.num <span class="keyword">and</span> i.isclash==<span class="number">0</span> <span class="keyword">and</span> j.isclash==<span class="number">0</span>:</span><br><span class="line">                        music.play()</span><br><span class="line">                        score += i.num</span><br><span class="line">                        i.isclash = <span class="number">1</span> <span class="comment"># 添加标记，标记过的就不再触发碰撞事件</span></span><br><span class="line">                        j.isclash = <span class="number">1</span></span><br><span class="line">                        c = ball(i.num+<span class="number">1</span>, i.body.position, space)</span><br><span class="line">                        Gsp.append(c)</span><br><span class="line">                        space.remove(i.body, i.shape) </span><br><span class="line">                        Gsp.remove(i) </span><br><span class="line">                        space.remove(j.body, j.shape)</span><br><span class="line">                        Gsp.remove(j)     </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> Gsp:</span><br><span class="line">                <span class="keyword">if</span> i.isclash == <span class="number">0</span>:</span><br><span class="line">                    <span class="comment"># music.play() #结束音乐    </span></span><br><span class="line">                    score += i.num</span><br><span class="line">                    i.isclash = <span class="number">1</span></span><br><span class="line">                    space.remove(i.body, i.shape)</span><br><span class="line">                    i.update()</span><br><span class="line">                space.debug_draw(draw_options)</span><br><span class="line">                screen.blit(bg_img, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">            scoreimage = myfont.render(<span class="string">"score: "</span> + str(score), <span class="literal">True</span>, (<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br><span class="line">            screen.blit(gameover, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">            <span class="comment"># over.play() #结束图片</span></span><br><span class="line">            clip.preview() <span class="comment">#视频的播放</span></span><br><span class="line">            <span class="keyword">if</span> score &gt; high_score:</span><br><span class="line">                high_score = score</span><br><span class="line">                screen.blit(myfont.render(<span class="string">"New High Score: "</span> + str(high_score), <span class="literal">True</span>, (<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>)),(<span class="number">85</span>, <span class="number">120</span>))</span><br><span class="line">                <span class="keyword">with</span> open(<span class="string">"score.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">                    f.write(str(high_score))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                screen.blit(myfont.render(<span class="string">"High Score: "</span> + str(high_score), <span class="literal">True</span>, (<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>)),(<span class="number">85</span>, <span class="number">120</span>))</span><br><span class="line">            screen.blit(scoreimage, (<span class="number">170</span>, <span class="number">50</span>))       </span><br><span class="line">        clock.tick(<span class="number">60</span>)</span><br><span class="line">        pygame.display.flip()</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/项目//" class="article-tag-list-link color3">项目</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/项目/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/02/%E8%A1%A5%E5%85%85%E4%B8%80%E4%B8%AA%E4%B9%8B%E5%89%8D%E5%86%99%E7%9A%84%E5%90%88%E6%88%90%E5%A4%A7%E8%A5%BF%E7%93%9C%E6%B8%B8%E6%88%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-深蹲" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1131,121 +1229,9 @@
 
 
   
-    <article id="post-最小互质数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/08/%E6%9C%80%E5%B0%8F%E4%BA%92%E8%B4%A8%E6%95%B0/">牛客网每日刷题(5)</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2021/01/08/%E6%9C%80%E5%B0%8F%E4%BA%92%E8%B4%A8%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2021-01-08T05:45:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-
-      
-        <h1 id="1-最小互质数"><a href="#1-最小互质数" class="headerlink" title="1. 最小互质数"></a>1. 最小互质数</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1. 题目"></a>1.1. 题目</h2><p>链接：<a href="https://ac.nowcoder.com/acm/problem/214048" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/problem/214048</a><br>来源：牛客网</p>
-<p>题目描述<br>我们定义两个数互质当且仅当gcd(a, b) = 1。</p>
-<p>现在qcjj手里有n个数，分别为a_1, a_2, a_3 \dots a_{n - 1}, a_{n}a<br>1,a2,a3…an−1,an。问，没有在这n个数中出现过并且与这n个数都互质的最小的数是多少。<br>qcjj觉得这个问题太简单了，于是她把这个问题交给你来解决。</p>
-<p>输入描述:<br>第一行一个数n(1≤n,ai≤105)，接下来n行，每行一个数，分别代表a1,a2 ,a3…an−1,an。</p>
-<p>输出描述:<br>输出一行代表答案。</p>
-<h2 id="1-2-样例输入-amp-amp-样例输出"><a href="#1-2-样例输入-amp-amp-样例输出" class="headerlink" title="1.2. 样例输入&amp;&amp;样例输出"></a>1.2. 样例输入&amp;&amp;样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7</span><br></pre></td></tr></table></figure>
-
-<p>说明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">没有在这n个数中出现的数有：6，7，……</span><br><span class="line">6与2， 3， 4不互质，最小的与这n个数互质的数就是7了。</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-思路"><a href="#1-3-思路" class="headerlink" title="1.3. 思路"></a>1.3. 思路</h2><p>没想到暴力算法就能过😔</p>
-<h2 id="1-4-AC代码"><a href="#1-4-AC代码" class="headerlink" title="1.4. AC代码"></a>1.4. AC代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000000</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2e9</span></span><br><span class="line"><span class="keyword">int</span> a[maxn],vis[maxn];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sc(n) scanf(<span class="meta-string">"%d"</span>,&amp;n)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !b?a:gcd(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        vis[a[i]]=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">            cnt=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(gcd(i,a[j])==<span class="number">1</span>)&#123;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt==n)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;i;</span><br><span class="line">            system(<span class="string">"pause"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">牛客网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/牛客网//" class="article-tag-list-link color4">牛客网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/08/%E6%9C%80%E5%B0%8F%E4%BA%92%E8%B4%A8%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
