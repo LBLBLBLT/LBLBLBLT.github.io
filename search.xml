@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>深蹲视频</title>
+      <link href="2021/11/02/%E6%B7%B1%E8%B9%B2/"/>
+      <url>2021/11/02/%E6%B7%B1%E8%B9%B2/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- <iframe hight = 498 width = 510 src="深蹲\\1.mp4"> --><p><video src="./深蹲/1.mp4" width="800px" height="600px" controls="controls"></video></p><p><video src="./深蹲/2.mp4" width="800px" height="600px" controls="controls"></video></p><!-- <iframe hight = 498 width = 510 src="深蹲\\2.mp4"> -->]]></content>
+      
+      
+      <categories>
+          
+          <category> 训练 </category>
+          
+          <category> 深蹲 </category>
+          
+          <category> 日常 </category>
+          
+          <category> 日常训练系列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 训练 </tag>
+            
+            <tag> 日常 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python一个小游戏(抄的)</title>
       <link href="2021/03/23/%E6%8A%84%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
       <url>2021/03/23/%E6%8A%84%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
