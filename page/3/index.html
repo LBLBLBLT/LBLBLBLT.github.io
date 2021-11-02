@@ -183,113 +183,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-PAT-A-1005" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/27/PAT-A-1005/">1005 Spell It Right (20分)</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/07/27/PAT-A-1005/" class="archive-article-date">
-  	<time datetime="2020-07-27T02:05:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-
-      
-        <h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1. 题目"></a>1. <strong>题目</strong></h3><p>Given a non-negative integer N, your task is to compute the sum of all the digits of N, and output every digit of the sum in English.</p>
-<p><strong>Input Specification:</strong><br>Each input file contains one test case. Each case occupies one line which contains an N (≤10​100​​ ).</p>
-<p><strong>Output Specification:</strong><br>For each test case, output in one line the digits of the sum in English words. There must be one space between two consecutive words, but no extra space at the end of a line.</p>
-<h3 id="2-样例输入"><a href="#2-样例输入" class="headerlink" title="2. 样例输入"></a>2. 样例输入</h3><p><code>12345</code></p>
-<h3 id="3-样例输出"><a href="#3-样例输出" class="headerlink" title="3. 样例输出"></a>3. 样例输出</h3><p><code>one five</code></p>
-<h3 id="4-思路"><a href="#4-思路" class="headerlink" title="4. 思路"></a>4. 思路</h3><p>简单的字符串转化输出<br>还是非常容易的</p>
-<h3 id="5-AC代码"><a href="#5-AC代码" class="headerlink" title="5. AC代码"></a>5. AC代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">string</span> arr[<span class="number">10</span>]&#123;<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>, <span class="string">"four"</span>, <span class="string">"five"</span>, <span class="string">"six"</span>, <span class="string">"seven"</span>, <span class="string">"eight"</span>, <span class="string">"nine"</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> number,result; <span class="built_in">cin</span> &gt;&gt; number;</span><br><span class="line">	<span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; number.<span class="built_in">size</span>(); n++) &#123;</span><br><span class="line">		temp += (number[n] - <span class="string">'0'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="built_in">string</span> s=to_string(temp);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;arr[s[<span class="number">0</span>]-<span class="string">'0'</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;s.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>&lt;&lt;arr[s[i]-<span class="string">'0'</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习//" class="article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题//" class="article-tag-list-link color3">刷题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习/刷题/pat//" class="article-tag-list-link color4">pat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/27/PAT-A-1005/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-PAT-A-1004" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1217,9 +1110,78 @@
 
 
   
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/17/hello-world/">Hello World</a>
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/04/17/hello-world/" class="archive-article-date">
+  	<time datetime="2020-04-17T02:17:12.593Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+
+      
+        <p>让我来试试第一篇文章</p>
+<p><img src="/2020/04/17/hello-world/1.png" alt="1"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/17/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </nav>
   
 
